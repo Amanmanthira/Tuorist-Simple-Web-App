@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Register - Explore World</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap" rel="stylesheet" />
+</head>
+<body style="font-family: 'Poppins', sans-serif; background:#f9faff; padding:2rem; text-align:center;">
+
+  <h2 style="color:#0066cc;">Create a New Account</h2>
+
+  <form action="user_register.php" method="POST" style="max-width:500px; margin:auto; text-align:left; background:#fff; padding:2rem; border-radius:10px; box-shadow: 0 0 10px rgba(0,0,0,0.05);">
+    
+    <label>Full Name</label><br />
+    <input name="fullname" required placeholder="John Doe" style="width:100%; padding:0.6rem; margin-bottom:1rem;" /><br />
+
+    <label>Email</label><br />
+    <input name="email" type="email" required placeholder="example@email.com" style="width:100%; padding:0.6rem; margin-bottom:1rem;" /><br />
+
+    <label>Username</label><br />
+    <input name="username" required placeholder="Choose Username" style="width:100%; padding:0.6rem; margin-bottom:1rem;" /><br />
+
+    <label>Password</label><br />
+    <input name="password" type="password" required placeholder="Choose Password" style="width:100%; padding:0.6rem; margin-bottom:1rem;" /><br />
+
+    <label>Confirm Password</label><br />
+    <input name="confirm_password" type="password" required placeholder="Confirm Password" style="width:100%; padding:0.6rem; margin-bottom:1rem;" /><br />
+
+    <label>Country</label><br />
+    <select name="country" required style="width:100%; padding:0.6rem; margin-bottom:1.5rem;">
+      <option value="">Select your country</option>
+      <option value="USA">United States</option>
+      <option value="UK">United Kingdom</option>
+      <option value="Canada">Canada</option>
+      <option value="Australia">Australia</option>
+      <option value="India">India</option>
+      <option value="Other">Other</option>
+    </select>
+
+    <button type="submit" style="padding:0.7rem 2rem; background:#0066cc; color:#fff; border:none; border-radius:5px; cursor:pointer;">Register</button>
+
+    <p style="margin-top:1rem;">Already have an account? <a href="login.html">Login</a></p>
+  </form>
+
+</body>
+</html>

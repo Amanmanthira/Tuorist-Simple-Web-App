@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Sri Lanka Trip Planner</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap" rel="stylesheet" />
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #e0f7ff, #ffffff);
+      margin: 0;
+      padding: 0;
+      color: #222;
+      overflow-x: hidden;
+    }
+    header {
+      background: linear-gradient(to right, #0066cc, #0099ff);
+      color: white;
+      padding: 2rem 2rem;
+      text-align: center;
+      font-size: 2.5rem;
+      font-weight: 700;
+      box-shadow: 0 3px 15px rgba(0,0,0,0.1);
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+    main {
+      max-width: 1200px;
+      margin: 2rem auto;
+      background: rgba(255, 255, 255, 0.6);
+      backdrop-filter: blur(10px);
+      border-radius: 16px;
+      padding: 2.5rem;
+      box-shadow: 0 8px 30px rgba(0,0,0,0.1);
+      animation: fadeIn 0.5s ease-in-out;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    label {
+      font-weight: 600;
+      display: block;
+      margin-bottom: 0.5rem;
+      font-size: 1.2rem;
+    }
+    select, button {
+      padding: 0.8rem 1.2rem;
+      font-size: 1rem;
+      border-radius: 10px;
+      border: 1px solid #ccc;
+      width: 100%;
+      max-width: 400px;
+      margin-bottom: 1.5rem;
+      transition: all 0.3s ease;
+      background: white;
+    }
+    select:focus, button:hover {
+      border-color: #0066cc;
+      box-shadow: 0 0 0 3px rgba(0,102,204,0.2);
+      outline: none;
+    }
+    section.details {
+      margin-top: 1rem;
+      padding-top: 1rem;
+      display: flex;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+    }
+    .detail-block {
+      flex: 1 1 300px;
+      background: rgba(255, 255, 255, 0.8);
+      border-radius: 12px;
+      padding: 1rem;
+      box-shadow: 0 4px 18px rgba(0, 0, 0, 0.05);
+      transition: transform 0.3s ease;
+    }
+    .detail-block:hover {
+      transform: translateY(-5px);
+    }
+    .detail-block h3 {
+      color: #004080;
+      font-size: 1.3rem;
+      margin-bottom: 0.8rem;
+    }
+    ul {
+      padding-left: 1.2rem;
+      margin: 0;
+    }
+    ul li {
+      margin-bottom: 0.4rem;
+    }
+    .hotels img {
+      width: 100%;
+      max-width: 300px;
+      border-radius: 12px;
+      margin-bottom: 0.5rem;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      transition: transform 0.3s ease;
+    }
+    .hotels img:hover {
+      transform: scale(1.03);
+    }
+    .hotels a {
+      text-decoration: none;
+      color: #0066cc;
+      font-weight: 600;
+    }
+    .images-container img {
+      max-width: 100%;
+      margin: 0.5rem 0;
+      border-radius: 12px;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.1);
+      transition: transform 0.3s ease;
+    }
+    .images-container img:hover {
+      transform: scale(1.05);
+    }
+    button.add-btn {
+      background: linear-gradient(to right, #0066cc, #0099ff);
+      color: white;
+      font-weight: 700;
+      border: none;
+      max-width: 180px;
+      margin-bottom: 2rem;
+      box-shadow: 0 6px 20px rgba(0,102,204,0.4);
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+    button.add-btn:hover {
+      background: linear-gradient(to right, #004a99, #007acc);
+    }
+    .itinerary {
+      margin-top: 2rem;
+      border-top: 2px solid #0099ff;
+      padding-top: 1.5rem;
+    }
+    .itinerary h2 {
+      color: #004080;
+      margin-bottom: 1rem;
+    }
+    .itinerary-list {
+      list-style: none;
+      padding: 0;
+    }
+    .itinerary-item {
+      background: #e1f0ff;
+      margin-bottom: 1rem;
+      padding: 1rem;
+      border-radius: 12px;
+      box-shadow: 0 3px 15px rgba(0,102,204,0.1);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      transition: transform 0.3s ease;
+    }
+    .itinerary-item:hover {
+      transform: translateY(-3px);
+    }
+    .remove-btn {
+      background: #ff4d4d;
+      border: none;
+      color: white;
+      font-weight: 700;
+      border-radius: 50%;
+      width: 32px;
+      height: 32px;
+      cursor: pointer;
+      font-size: 1.2rem;
+      text-align: center;
+      box-shadow: 0 4px 12px rgba(255,77,77,0.4);
+      transition: background 0.3s ease;
+    }
+    .remove-btn:hover {
+      background: #cc0000;
+    }
+    @media (max-width: 700px) {
+      section.details {
+        flex-direction: column;
+      }
+      .detail-block {
+        max-width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<header>Sri Lanka Trip Planner 🌴</header>
+
+<main>
+  <label for="location-select">Choose a location to explore:</label>
+  <select id="location-select">
+    <option value="">-- Select Location --</option>
+  </select>
+
+  <section class="details" id="location-details" style="display:none;">
+    <!-- Dynamic content goes here -->
+  </section>
+
+  <button class="add-btn" id="add-location-btn" style="display:none;">Add to Trip Plan</button>
+
+  <section class="itinerary" id="itinerary" style="display:none;">
+    <h2>Your Trip Plan</h2>
+    <ul class="itinerary-list" id="itinerary-list"></ul>
+  </section>
+</main>
+
+<script>
+  let data = null;
+  let itinerary = [];
+
+  const locationSelect = document.getElementById('location-select');
+  const locationDetails = document.getElementById('location-details');
+  const addLocationBtn = document.getElementById('add-location-btn');
+  const itinerarySection = document.getElementById('itinerary');
+  const itineraryList = document.getElementById('itinerary-list');
+
+  async function loadData() {
+    try {
+      const res = await fetch('srilanka_data.json');
+      if (!res.ok) throw new Error('Failed to load data');
+      data = await res.json();
+      populateLocations();
+    } catch (e) {
+      locationDetails.innerHTML = `<p style="color:red;">Error loading data: ${e.message}</p>`;
+    }
+  }
+
+  function populateLocations() {
+    data.locations.forEach(loc => {
+      const option = document.createElement('option');
+      option.value = loc.name;
+      option.textContent = loc.name;
+      locationSelect.appendChild(option);
+    });
+  }
+
+  locationSelect.addEventListener('change', () => {
+    const selectedName = locationSelect.value;
+    if (!selectedName) {
+      locationDetails.style.display = 'none';
+      addLocationBtn.style.display = 'none';
+      return;
+    }
+    const location = data.locations.find(loc => loc.name === selectedName);
+    showLocationDetails(location);
+    addLocationBtn.style.display = 'inline-block';
+  });
+
+  function showLocationDetails(location) {
+    locationDetails.style.display = 'flex';
+    locationDetails.innerHTML = `
+      <div class="detail-block description">
+        <h3>About ${location.name}</h3>
+        <p>${location.description}</p>
+      </div>
+      <div class="detail-block attractions">
+        <h3>Attractions</h3>
+        <ul>${location.attractions.map(a => `<li>${a}</li>`).join('')}</ul>
+      </div>
+      <div class="detail-block hotels">
+        <h3>Famous Hotels</h3>
+        ${location.hotels.map(h => `
+          <div>
+            <img src="${h.image}" alt="${h.name}" />
+            <a href="${h.url}" target="_blank" rel="noopener noreferrer">${h.name}</a>
+            <p>Rating: ${h.rating} ⭐</p>
+          </div>
+        `).join('')}
+      </div>
+      <div class="detail-block transport">
+        <h3>Transportation</h3>
+        <ul>${location.transport.map(t => `<li>${t}</li>`).join('')}</ul>
+      </div>
+      <div class="detail-block tips">
+        <h3>Travel Tips</h3>
+        <ul>${location.tips.map(t => `<li>${t}</li>`).join('')}</ul>
+      </div>
+      <div class="detail-block images-container">
+        <h3>Gallery</h3>
+        ${location.images.map(img => `<img src="${img}" alt="${location.name} image" />`).join('')}
+      </div>
+    `;
+  }
+
+  addLocationBtn.addEventListener('click', () => {
+    const selectedName = locationSelect.value;
+    if (!selectedName) return;
+
+    if (itinerary.some(loc => loc.name === selectedName)) {
+      alert('This location is already in your trip plan!');
+      return;
+    }
+
+    const location = data.locations.find(loc => loc.name === selectedName);
+    itinerary.push(location);
+    updateItinerary();
+  });
+
+  function updateItinerary() {
+    if (itinerary.length === 0) {
+      itinerarySection.style.display = 'none';
+      return;
+    }
+    itinerarySection.style.display = 'block';
+    itineraryList.innerHTML = '';
+    itinerary.forEach((loc, idx) => {
+      const li = document.createElement('li');
+      li.className = 'itinerary-item';
+      li.innerHTML = `
+        <div>
+          <strong>${loc.name}</strong>: ${loc.description}
+          <br><small>Attractions: ${loc.attractions.join(', ')}</small>
+        </div>
+        <button class="remove-btn" title="Remove from trip plan" data-index="${idx}">&times;</button>
+      `;
+      itineraryList.appendChild(li);
+    });
+
+    document.querySelectorAll('.remove-btn').forEach(btn => {
+      btn.onclick = () => {
+        const idx = parseInt(btn.getAttribute('data-index'));
+        itinerary.splice(idx, 1);
+        updateItinerary();
+      };
+    });
+  }
+
+  window.addEventListener('DOMContentLoaded', loadData);
+</script>
+
+</body>
+</html>

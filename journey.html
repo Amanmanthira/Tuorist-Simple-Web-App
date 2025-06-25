@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Explore World – Our Journey</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap" rel="stylesheet" />
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #0083b0;
+      --secondary: #005f73;
+      --bg: #fefefe;
+      --text: #222;
+      --accent-bg: #e6f8ff;
+      --dark-bg: #1a1a1a;
+      --dark-text: #f1f1f1;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      transition: background 0.3s, color 0.3s;
+    }
+
+    body.dark {
+      background: var(--dark-bg);
+      color: var(--dark-text);
+    }
+
+    nav {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background: #fff;
+      padding: 1rem 2rem;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      z-index: 1000;
+    }
+
+    nav a {
+      margin: 0 12px;
+      text-decoration: none;
+      color: #555;
+      transition: 0.3s;
+    }
+
+    nav a.active {
+      font-weight: 700;
+      color: var(--primary);
+      border-bottom: 2px solid var(--primary);
+    }
+
+    .toggle-dark {
+      cursor: pointer;
+      font-size: 1.2rem;
+      color: var(--primary);
+    }
+
+    main {
+      padding: 6rem 2rem 4rem;
+      max-width: 1000px;
+      margin: auto;
+    }
+
+    h1 {
+      text-align: center;
+      font-size: 2.5rem;
+      color: var(--primary);
+      margin-bottom: 1.5rem;
+    }
+
+    .timeline {
+      position: relative;
+      margin-left: 30px;
+      padding-left: 20px;
+      border-left: 4px solid var(--primary);
+    }
+
+    .event {
+      position: relative;
+      margin-bottom: 3rem;
+      padding-left: 30px;
+      opacity: 0;
+      transform: translateY(30px);
+    }
+
+    .event.active {
+      opacity: 1;
+      transform: translateY(0);
+      transition: all 0.7s ease;
+    }
+
+    .event::before {
+      content: "";
+      position: absolute;
+      left: -35px;
+      top: 0;
+      width: 20px;
+      height: 20px;
+      background: var(--primary);
+      border-radius: 50%;
+      box-shadow: 0 0 10px var(--primary);
+    }
+
+    .event h3 {
+      margin: 0 0 0.5rem;
+      color: var(--secondary);
+    }
+
+    .event p {
+      line-height: 1.6;
+      margin: 0;
+    }
+
+    .filters {
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+
+    .filters button {
+      background: var(--primary);
+      border: none;
+      color: white;
+      padding: 0.5rem 1rem;
+      margin: 0.3rem;
+      border-radius: 20px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .filters button:hover {
+      background: #00a7d3;
+    }
+
+    .dark nav {
+      background: #222;
+    }
+
+    .dark nav a {
+      color: #ccc;
+    }
+
+    .dark nav a.active {
+      color: #00cfe8;
+    }
+
+    .dark .event::before {
+      background: #00cfe8;
+      box-shadow: 0 0 10px #00cfe8;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav>
+    <div style="font-weight:700; font-size:1.5rem; color:var(--primary);">🌍 Ceylon Waves</div>
+    <div>
+      <a href="index.html">Home</a>
+            <a href="http://localhost/project/my_bookings.php">My Bookings</a> 
+      <a href="about.html">Who We Are</a>
+      <a href="blogs.html">Blogs</a>
+      <a href="journey.html" class="active">Journey</a>
+      <a href="services.html">Services</a>
+      <a href="weather-news.html">Weather & News</a>
+      <a href="contact.html">Contact</a>
+    </div>
+    <div class="toggle-dark" onclick="toggleDarkMode()" title="Toggle Dark Mode">
+      <i class="fas fa-moon"></i>
+    </div>
+  </nav>
+
+  <!-- Main Content -->
+  <main>
+    <h1>Our Journey Timeline</h1>
+
+    <div class="filters">
+      <button onclick="filterYear('all')">All</button>
+      <button onclick="filterYear('2023')">2023</button>
+      <button onclick="filterYear('2024')">2024</button>
+    </div>
+
+    <div class="timeline" id="timeline">
+      <!-- Timeline events -->
+      <div class="event" data-year="2023">
+        <h3>January 2023</h3>
+        <p>🌱 Project inception: Conceptualized the Explore World platform to connect travelers worldwide.</p>
+      </div>
+
+      <div class="event" data-year="2023">
+        <h3>March 2023</h3>
+        <p>🎨 Finalized UI/UX and created responsive mockups for cross-device travel experiences.</p>
+      </div>
+
+      <div class="event" data-year="2023">
+        <h3>June 2023</h3>
+        <p>💻 Developed core features: blogs, journeys, and real-time comment support.</p>
+      </div>
+
+      <div class="event" data-year="2023">
+        <h3>September 2023</h3>
+        <p>🌦️ Launched weather/news integrations and expanded to support guided tours.</p>
+      </div>
+
+      <div class="event" data-year="2024">
+        <h3>May 2024</h3>
+        <p>🚀 Official launch with user beta testing and continual platform improvements.</p>
+      </div>
+
+      <div class="event" data-year="2024">
+        <h3>April 2024</h3>
+        <p>📱 Mobile app beta testing began to deliver journeys on the go.</p>
+      </div>
+    </div>
+  </main>
+
+  <!-- JavaScript -->
+  <script>
+    // Dark Mode Toggle
+    function toggleDarkMode() {
+      document.body.classList.toggle('dark');
+    }
+
+    // Scroll Animation
+    window.addEventListener('scroll', () => {
+      document.querySelectorAll('.event').forEach(el => {
+        const top = el.getBoundingClientRect().top;
+        if (top < window.innerHeight - 100) {
+          el.classList.add('active');
+        }
+      });
+    });
+
+    // Initial hide
+    document.querySelectorAll('.event').forEach(el => {
+      el.classList.remove('active');
+    });
+
+    // Filter by year
+    function filterYear(year) {
+      document.querySelectorAll('.event').forEach(el => {
+        if (year === 'all' || el.dataset.year === year) {
+          el.style.display = 'block';
+        } else {
+          el.style.display = 'none';
+        }
+      });
+    }
+  </script>
+
+</body>
+</html>

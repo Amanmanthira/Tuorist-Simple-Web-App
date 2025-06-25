@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Explore World - Weather & News | Sri Lanka 2025</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap" rel="stylesheet" />
+  <style>
+    /* Reset & base */
+    * {
+      box-sizing: border-box;
+      transition: all 0.3s ease;
+    }
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background: #eef3f7;
+      color: #222;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      overflow-x: hidden;
+    }
+    a {
+      color: #0066cc;
+      text-decoration: none;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+    /* Navbar */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      background: #fff;
+      padding: 1rem 2rem;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.1);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      z-index: 1000;
+      font-weight: 600;
+    }
+    nav .logo {
+      font-size: 1.7rem;
+      color: #0066cc;
+      cursor: pointer;
+      user-select: none;
+      display: flex;
+      align-items: center;
+      gap: 0.3rem;
+    }
+    nav .logo span {
+      font-size: 1.5rem;
+    }
+    nav a {
+      margin: 0 12px;
+      color: #555;
+      font-weight: 500;
+      position: relative;
+    }
+    nav a.active,
+    nav a:hover {
+      color: #0066cc;
+      font-weight: 700;
+    }
+    nav a.active::after {
+      content: '';
+      position: absolute;
+      bottom: -6px;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: #0066cc;
+      border-radius: 2px;
+    }
+    /* Main container */
+    main {
+      padding: 7rem 2rem 3rem;
+      max-width: 1100px;
+      margin: 0 auto;
+      display: flex;
+      gap: 3rem;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: flex-start;
+    }
+    /* Weather section */
+    section.weather {
+      background: #fff;
+      border-radius: 15px;
+      box-shadow: 0 8px 20px rgba(0,102,204,0.15);
+      padding: 2rem;
+      flex: 1 1 400px;
+      max-width: 450px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    section.weather h1 {
+      color: #0066cc;
+      margin-bottom: 1.5rem;
+      font-size: 2.5rem;
+      font-weight: 700;
+    }
+    /* Sun icon with rays animation */
+    .sun-container {
+      position: relative;
+      width: 110px;
+      height: 110px;
+      margin-bottom: 1.5rem;
+    }
+    .sun-core {
+      width: 70px;
+      height: 70px;
+      background: #ffd93b;
+      border-radius: 50%;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      box-shadow: 0 0 20px #ffde57;
+      animation: sunGlow 3s ease-in-out infinite alternate;
+      z-index: 2;
+    }
+    /* Sun rays */
+    .sun-rays {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 90px;
+      height: 90px;
+      transform-origin: center;
+      animation: sunSpin 15s linear infinite;
+      z-index: 1;
+    }
+    .ray {
+      position: absolute;
+      width: 6px;
+      height: 20px;
+      background: #ffd93b;
+      border-radius: 3px;
+      box-shadow: 0 0 6px #ffd93b;
+    }
+    .ray:nth-child(1) { top: 0; left: 42px; }
+    .ray:nth-child(2) { top: 10px; right: 10px; transform: rotate(45deg); transform-origin: center;}
+    .ray:nth-child(3) { left: 0; top: 42px; transform: rotate(90deg); transform-origin: center;}
+    .ray:nth-child(4) { bottom: 10px; right: 10px; transform: rotate(135deg); transform-origin: center;}
+    .ray:nth-child(5) { bottom: 0; left: 42px; }
+    .ray:nth-child(6) { bottom: 10px; left: 10px; transform: rotate(-135deg); transform-origin: center;}
+    .ray:nth-child(7) { left: 10px; top: 10px; transform: rotate(-45deg); transform-origin: center;}
+    .ray:nth-child(8) { top: 10px; left: 10px; }
+
+    /* Text */
+    .temp {
+      font-size: 3rem;
+      font-weight: 700;
+      color: #222;
+      margin-bottom: 0.3rem;
+    }
+    .weather-desc {
+      font-size: 1.3rem;
+      color: #555;
+      margin-bottom: 0.8rem;
+    }
+    .location {
+      font-size: 1rem;
+      color: #888;
+      margin-bottom: 1rem;
+    }
+    .weather-info {
+      font-size: 0.95rem;
+      color: #666;
+      max-width: 350px;
+      line-height: 1.5;
+      margin: 0 auto;
+    }
+
+    /* News section */
+    section.news {
+      flex: 2 1 600px;
+      max-width: 600px;
+    }
+    section.news h1 {
+      color: #0066cc;
+      margin-bottom: 1.5rem;
+      font-size: 2.5rem;
+      font-weight: 700;
+      text-align: center;
+    }
+    /* News cards */
+    .news-card {
+      background: #fff;
+      border-radius: 15px;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.1);
+      padding: 1.8rem 2rem;
+      margin-bottom: 1.8rem;
+      cursor: pointer;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      position: relative;
+      overflow: hidden;
+    }
+    .news-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 16px 36px rgba(0,0,0,0.15);
+    }
+    .news-card h2 {
+      margin: 0;
+      color: #004080;
+      font-weight: 700;
+      font-size: 1.4rem;
+    }
+    .news-card p {
+      color: #444;
+      line-height: 1.5;
+      margin: 0;
+      flex-grow: 1;
+      font-size: 1rem;
+    }
+    .news-card a.read-more {
+      align-self: flex-start;
+      margin-top: 8px;
+      font-weight: 600;
+      color: #0066cc;
+      font-size: 1rem;
+    }
+    .news-card a.read-more:hover {
+      text-decoration: underline;
+    }
+    /* Footer spacing */
+    @media (max-width: 900px) {
+      main {
+        flex-direction: column;
+        padding: 7rem 1rem 3rem;
+      }
+      section.weather,
+      section.news {
+        max-width: 100% !important;
+      }
+      nav {
+        padding: 1rem 1rem;
+      }
+    }
+    /* Animations */
+    @keyframes sunSpin {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+    @keyframes sunGlow {
+      0% { box-shadow: 0 0 10px #ffde57; }
+      100% { box-shadow: 0 0 25px #ffd93b; }
+    }
+
+     nav {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background: #fff;
+      padding: 1rem 2rem;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      z-index: 1000;
+    }
+    nav .nav-links a {
+      margin: 0 12px;
+      text-decoration: none;
+      color: #555;
+      transition: 0.3s;
+    }
+    nav .nav-links a.active {
+      color: var(--primary);
+      font-weight: 700;
+      border-bottom: 2px solid var(--primary);
+    }
+    nav .nav-links a:hover {
+      color: var(--primary);
+    }
+    nav .toggle {
+      cursor: pointer;
+      font-size: 1.2rem;
+      color: var(--primary);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav>
+    <div style="font-weight:700; font-size:1.5rem; color:var(--primary);">🌍 Ceylon Waves</div>
+    <div class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="http://localhost/project/my_bookings.php">My Bookings</a> 
+      <a href="about.html" >Who We Are</a>
+      <a href="blogs.html" >Blogs</a>
+      <a href="journey.html">Journey</a>
+      <a href="services.html">Services</a>
+      <a href="weather-news.html" class="active">Weather & News</a>
+      <a href="contact.html">Contact</a>
+    </div>
+    <div
+      class="toggle"
+      onclick="toggleDarkMode()"
+      title="Toggle dark mode"
+      role="button"
+      tabindex="0"
+      aria-pressed="false"
+      aria-label="Toggle dark mode"
+    >
+      <i class="fas fa-moon"></i>
+    </div>
+</nav>
+
+  <main>
+    <!-- Weather Section -->
+    <section class="weather" aria-label="Current weather in Colombo, Sri Lanka">
+      <h1>Current Weather</h1>
+      <div class="sun-container" aria-hidden="true">
+        <div class="sun-rays" role="presentation">
+          <div class="ray"></div>
+          <div class="ray"></div>
+          <div class="ray"></div>
+          <div class="ray"></div>
+          <div class="ray"></div>
+          <div class="ray"></div>
+          <div class="ray"></div>
+          <div class="ray"></div>
+        </div>
+        <div class="sun-core"></div>
+      </div>
+      <div class="temp" aria-live="polite" aria-atomic="true">28°C</div>
+      <div class="weather-desc">Cloudy, Light Showers</div>
+      <div class="location">Location: Colombo, Sri Lanka</div>
+      <div class="weather-info">
+        Expect intermittent clouds with light rain showers today. Temperatures remain warm, with highs near 30°C (86°F). Perfect weather to explore indoor and outdoor attractions with an umbrella handy.
+      </div>
+    </section>
+
+    <!-- News Section -->
+    <section class="news" aria-label="Latest news about Sri Lanka">
+      <h1>Latest News</h1>
+
+      <article class="news-card" tabindex="0">
+        <h2>Sri Lanka's Tourism Surge in 2025</h2>
+        <p>
+          Sri Lanka's tourism sector is recovering strongly, with over 250,000 visitors welcomed in January 2025 — a 21.4% increase year-on-year. India and Russia are leading source markets. The government targets 3 million tourists in 2025 generating $5 billion in revenue.
+        </p>
+        <a href="https://www.elanka.com.au/sri-lanka-news-february-2025/?utm_source=chatgpt.com" target="_blank" rel="noopener" class="read-more">Read More →</a>
+      </article>
+
+      <article class="news-card" tabindex="0">
+        <h2>Ethical Safari Experiences at Yala National Park</h2>
+        <p>
+          Sajith Withanage of Hilton Yala Resort offers eco-friendly safaris highlighting natural observation and conservation. Explore Sri Lanka’s rich biodiversity, including leopards and elephants, while staying in sustainable accommodations that practice water recycling.
+        </p>
+        <a href="https://www.theguardian.com/five-star-travel-in-south-east-asia/2025/may/21/sri-lanka-safari-guide-wildlife-experiences-for-tourists?utm_source=chatgpt.com" target="_blank" rel="noopener" class="read-more">Read More →</a>
+      </article>
+
+      <article class="news-card" tabindex="0">
+        <h2>Resumption of Ferry Service Between India and Sri Lanka</h2>
+        <p>
+          The high-speed ferry HSC Cheriyapani resumed service in October 2023, connecting Nagapattinam, India with Kankesanthurai, Sri Lanka. This marks the first passenger ferry service between the countries in over 40 years, improving regional travel and trade.
+        </p>
+        <a href="https://en.wikipedia.org/wiki/HSC_Cheriyapani?utm_source=chatgpt.com" target="_blank" rel="noopener" class="read-more">Read More →</a>
+      </article>
+
+    </section>
+  </main>
+
+</body>
+</html>

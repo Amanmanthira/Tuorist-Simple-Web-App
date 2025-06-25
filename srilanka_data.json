@@ -1,0 +1,353 @@
+{
+  "locations": [
+    {
+      "name": "Colombo",
+      "description": "The vibrant commercial capital of Sri Lanka with colonial architecture, shopping, and beaches.",
+      "attractions": [
+        "Galle Face Green",
+        "National Museum",
+        "Gangaramaya Temple",
+        "Viharamahadevi Park",
+        "Pettah Floating Market"
+      ],
+      "hotels": [
+        {
+          "name": "Cinnamon Grand Colombo",
+          "rating": 4.5,
+          "url": "https://www.cinnamonhotels.com/cinnamongrandcolombo",
+          "image": "https://d18slle4wlf9ku.cloudfront.net/www.cinnamonhotels.com-1302818674/cms/cache/v2/66bd61ab411ad.jpg/1920x1080/fit/80/e025f0c5fa81a93236d946f06d436f9c.jpg"
+        },
+        {
+          "name": "Taj Samudra Colombo",
+          "rating": 4.4,
+          "url": "https://www.tajhotels.com/en-in/taj/taj-samudra-colombo/",
+          "image": "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/2c/20/6c/de/taj-samudra-facade.jpg?w=900&h=-1&s=1"
+        },
+        {
+          "name": "Hilton Colombo",
+          "rating": 4.3,
+          "url": "https://www.hilton.com/en/hotels/colhitw-hilton-colombo/",
+          "image": "https://bmkltsly13vb.compat.objectstorage.ap-mumbai-1.oraclecloud.com/cdn.ft.lk/ftadmin/wp-content/files_mf/1468253593DFT17F1.jpg"
+        }
+      ],
+      "transport": [
+        "Tuk-tuks",
+        "Taxis",
+        "Buses",
+        "Railway Station - Fort",
+        "Uber"
+      ],
+      "tips": [
+        "Try street food at Pettah Market",
+        "Visit early morning for less traffic",
+        "Bargain politely at markets"
+      ],
+      "images": [
+        "https://www.andbeyond.com/wp-content/uploads/sites/5/colombo-sri-lanka.jpg",
+        "https://media.routard.com/image/61/0/sri-lanka-cargills-miller.1545610.142.jpg",
+        "https://images.squarespace-cdn.com/content/v1/549d41a3e4b003c6ce131926/1533794487081-QTF03VU3BV4RRVJOI0Z9/Colombo-31-20180505.jpg"
+      ]
+    },
+    {
+      "name": "Kandy",
+      "description": "Famous for the Temple of the Tooth and scenic lake views in the hill country.",
+      "attractions": [
+        "Temple of the Tooth",
+        "Kandy Lake",
+        "Royal Botanical Gardens",
+        "Udawattekele Sanctuary",
+        "Bahiravokanda Vihara Buddha Statue"
+      ],
+      "hotels": [
+        {
+          "name": "The Kandy House",
+          "rating": 4.7,
+          "url": "https://thekandyhouse.com/",
+          "image": "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/28/b1/aa/2d/the-kandy-house.jpg?w=900&h=500&s=1"
+        },
+        {
+          "name": "Earl’s Regency Hotel",
+          "rating": 4.2,
+          "url": "https://www.earlsregency.lk/",
+          "image": "https://d3a2q5al71qg9.cloudfront.net/sites/2/2021/01/Slide4.jpg"
+        },
+        {
+          "name": "Mahaweli Reach Hotel",
+          "rating": 4.3,
+          "url": "https://www.mahawelireach.com/",
+          "image": "https://pix10.agoda.net/property/44542/0/6c7d9a2a3ca0bd2ba25df7841612c756.jpeg?s=414x232"
+        }
+      ],
+      "transport": [
+        "Tuk-tuks",
+        "Local buses",
+        "Rental cars",
+        "Trains"
+      ],
+      "tips": [
+        "Dress respectfully for temple visits",
+        "Buy tickets in advance for botanical gardens",
+        "Evening cultural shows are a must-see"
+      ],
+      "images": [
+        "https://upload.wikimedia.org/wikipedia/commons/c/c2/SL_Kandy_asv2020-01_img04_Queens_Hotel.jpg",
+        "https://whc.unesco.org/uploads/thumbs/site_0450_0020-1200-630-20151105154018.jpg",
+        "https://thumbs.dreamstime.com/b/kandy-view-pint-one-best-tourist-attraction-place-point-sri-lanka-to-see-city-148677459.jpg"
+      ]
+    },
+    {
+      "name": "Galle",
+      "description": "Historic fortified city with Dutch colonial architecture on the southern coast.",
+      "attractions": [
+        "Galle Fort",
+        "Dutch Reformed Church",
+        "Lighthouse",
+        "Jungle Beach",
+        "Maritime Museum"
+      ],
+      "hotels": [
+        {
+          "name": "Fort Bazaar",
+          "rating": 4.6,
+          "url": "https://www.fortbazaar.com/",
+          "image": "https://www.teardrop-hotels.com/fort-bazaar/wp-content/uploads/sites/3/2024/07/Fort-bazaar-home-page-1200x630-1.jpg"
+        },
+        {
+          "name": "Jetwing Lighthouse",
+          "rating": 4.5,
+          "url": "https://www.jetwinghotels.com/jetwinglighthouse/",
+          "image": "https://cf.bstatic.com/xdata/images/hotel/max1024x768/490937419.jpg?k=db375a7f6605f58e61e5c215e67b123fb574b467d15a784387c7b2b04cc272c0&o=&hp=1"
+        },
+        {
+          "name": "Amangalla",
+          "rating": 4.8,
+          "url": "https://www.aman.com/hotels/amangalla",
+          "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQvxW9UybPsJt0jw_yZReXfMyY6o0YRos2tFg&s"
+        }
+      ],
+      "transport": [
+        "Tuk-tuks",
+        "Bicycles",
+        "Local buses",
+        "Taxis"
+      ],
+      "tips": [
+        "Explore on foot to soak in the atmosphere",
+        "Visit the lighthouse for sunset views",
+        "Check out local cafes for fresh seafood"
+      ],
+      "images": [
+        "https://travelsetu.com/apps/uploads/new_destinations_photos/destination/2024/06/27/7070445300e5d0a21088f2f712bafb4d_1000x1000.jpg",
+        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRKdPPylNq_0EaWIyMqzYPcB9yD1sJrto2tnQ&s",
+        "https://srilankatourisminfo.com/wp-content/uploads/2018/08/image-result-for-galle-fort-colourful.jpeg"
+      ]
+    },
+    {
+      "name": "Sigiriya",
+      "description": "Famous for the ancient rock fortress and UNESCO World Heritage Site.",
+      "attractions": [
+        "Sigiriya Rock Fortress",
+        "Lion's Paw Entrance",
+        "Water Gardens",
+        "Pidurangala Rock"
+      ],
+      "hotels": [
+        {
+          "name": "Aliya Resort and Spa",
+          "rating": 4.3,
+          "url": "https://aliyaresort.com/",
+          "image": "https://cf.bstatic.com/xdata/images/hotel/max1024x768/427289554.jpg?k=eb6b308b33c7d33f6916497497953cbd48095e9d75c5141378adfb4f807a64e4&o=&hp=1"
+        },
+        {
+          "name": "Hotel Sigiriya",
+          "rating": 4.2,
+          "url": "https://www.hotelsigiriya.com/",
+          "image": "https://cf.bstatic.com/xdata/images/hotel/max1024x768/98522872.jpg?k=8a552e32ba8fbde0ddc0efca9d8830edaf9eb3817c91e6b50b49933117dfcb85&o=&hp=1"
+        },
+        {
+          "name": "Jetwing Vil Uyana",
+          "rating": 4.7,
+          "url": "https://www.jetwinghotels.com/jetwingviluyana/",
+          "image": "https://jetwingtravels.com/wp-content/uploads/2023/10/HeadBanner-01-1-scaled.jpg"
+        }
+      ],
+      "transport": [
+        "Tuk-tuks",
+        "Private cars",
+        "Guided tours",
+        "Bicycles"
+      ],
+      "tips": [
+        "Start early to avoid midday heat",
+        "Wear good walking shoes",
+        "Visit Pidurangala for stunning fortress views"
+      ],
+      "images": [
+        "https://www.lovidhu.com/uploads/posts-seo/2021/03/sigiria-sri-lanka.jpg",
+        "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/0f/ed/85/6b/um-palacio-no-topo-da.jpg?w=900&h=500&s=1",
+        "https://media.istockphoto.com/id/175482008/photo/ancient-frescoe-of-sigiriya-sri-lanka.jpg?s=612x612&w=0&k=20&c=D5akMHbcookCwnLyNU9JZMYNLTLRc7Prmta900p-JLc="
+      ]
+    },
+    {
+      "name": "Ella",
+      "description": "A scenic mountain town known for tea plantations and hiking trails.",
+      "attractions": [
+        "Ella Rock",
+        "Nine Arches Bridge",
+        "Little Adam's Peak",
+        "Ravana Falls"
+      ],
+      "hotels": [
+        {
+          "name": "98 Acres Resort & Spa",
+          "rating": 4.6,
+          "url": "https://www.98acresresort.com/",
+          "image": "https://cf.bstatic.com/xdata/images/hotel/max1024x768/123777522.jpg?k=d68c52c58bdec8f871e51d89c80a0ac988559b40f89423842a52ea096e967d37&o=&hp=1"
+        },
+        {
+          "name": "Mountain Heavens",
+          "rating": 4.4,
+          "url": "https://mountainheavensella.com/",
+          "image": "https://images.trvl-media.com/lodging/12000000/11750000/11741700/11741687/ad126d58.jpg?impolicy=resizecrop&rw=575&rh=575&ra=fill"
+        },
+        {
+          "name": "Ella Jungle Resort",
+          "rating": 4.3,
+          "url": "https://www.ellajungleresort.com/",
+          "image": "https://www.ellajungleresort.lk/wp-content/uploads/2019/06/home_003.jpg"
+        }
+      ],
+      "transport": [
+        "Tuk-tuks",
+        "Trains",
+        "Private drivers",
+        "Hiking"
+      ],
+      "tips": [
+        "Book train tickets in advance",
+        "Carry water and snacks for hikes",
+        "Visit Nine Arches early to avoid crowds"
+      ],
+      "images": [
+        "https://us.lakpura.com/cdn/shop/files/demodara-nine-arch-bridge-ella-sri-lanka-scaled-1_77c0b1eb-4170-472a-b6df-950903726734.jpg?v=1654085052&width=3840",
+        "https://twotalltravellers.com/wp-content/uploads/2022/03/Things-To-Do-In-Ella-Featured.jpg",
+        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRzQD8SE9HnBaiEdtPJjdxCejgsn10PLCWjR90sUSIYc26CMO4adgJ2oAfYJGH9zy1B1w8&usqp=CAU"
+      ]
+    },
+    {
+      "name": "Nuwara Eliya",
+      "description": "A cool hill station known as 'Little England' for its colonial charm and tea estates.",
+      "attractions": [
+        "Hakgala Botanical Garden",
+        "Gregory Lake",
+        "Victoria Park",
+        "Tea Factories"
+      ],
+      "hotels": [
+        {
+          "name": "Heritance Tea Factory",
+          "rating": 4.6,
+          "url": "https://www.heritancehotels.com/teafactory/",
+          "image": "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/05/da/45/a3/heritance-tea-factory.jpg?w=900&h=500&s=1"
+        },
+        {
+          "name": "The Grand Hotel",
+          "rating": 4.5,
+          "url": "https://www.grandhotelnuwaraeliya.com/",
+          "image": "https://www.thegrandhotelnuwaraeliya.com/wp-content/uploads/2023/11/grand-hotel-gallery-4-1920x1000-1.jpg"
+        }
+      ],
+      "transport": [
+        "Tuk-tuks",
+        "Buses",
+        "Private cars",
+        "Trains"
+      ],
+      "tips": [
+        "Bring warm clothing for cool evenings",
+        "Tour a tea factory for an authentic experience",
+        "Visit Gregory Lake for boating"
+      ],
+      "images": [
+        "https://media.tacdn.com/media/attractions-splice-spp-674x446/0b/39/a0/e9.jpg",
+        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ3ZfnqEWIS4UWHEultAJnHzTZ95i-b5j2FeaQqogGqNic9rYuLxv15uWAZn_fuvib6uwk&usqp=CAU"
+      ]
+    },
+    {
+      "name": "Mirissa",
+      "description": "A laid-back beach town famous for whale watching and vibrant nightlife.",
+      "attractions": [
+        "Mirissa Beach",
+        "Parrot Rock",
+        "Coconut Tree Hill",
+        "Whale Watching Tours"
+      ],
+      "hotels": [
+        {
+          "name": "Mandara Resort Mirissa",
+          "rating": 4.4,
+          "url": "https://www.mandarahotels.com/mirissa/",
+          "image": "https://www.mandarahotels.com/mandararesortmirissa/wp-content/uploads/sites/5/2018/01/810_7935-3-1.jpeg"
+        },
+        {
+          "name": "Paradise Beach Club",
+          "rating": 4.3,
+          "url": "https://www.paradisebeachclubmirissa.com/",
+          "image": "https://cf.bstatic.com/xdata/images/hotel/max1024x768/35830886.jpg?k=e740f5ad9a28967644c458526681b633ca75557b2c7419798df97efee276cd3f&o=&hp=1"
+        }
+      ],
+      "transport": [
+        "Tuk-tuks",
+        "Buses",
+        "Scooter rentals",
+        "Taxis"
+      ],
+      "tips": [
+        "Book whale watching tours early",
+        "Visit Coconut Tree Hill at sunrise",
+        "Try fresh seafood at beachside restaurants"
+      ],
+      "images": [
+        "https://www.laurewanders.com/wp-content/uploads/2023/12/Things-to-do-in-Mirissa-00007.jpg",
+        "https://asianwanderlust.com/wp-content/uploads/2019/04/Mirissa-Sri-Lanka-Parrot-Rock-2-1024x683.jpg"
+      ]
+    }
+  ],
+  "popularFoods": [
+    {
+      "name": "Rice and Curry",
+      "description": "Staple dish featuring rice with various vegetable, meat, or fish curries.",
+      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTfFbm107YKzroxaARjYt6jDx0N39fAmpGxLW94mPlZM8QX1pZn7hJb1-oymF43AQVIvrY&usqp=CAU"
+    },
+    {
+      "name": "Hoppers (Appa)",
+      "description": "Bowl-shaped pancakes made from fermented rice batter.",
+      "image": "https://www.australianeggs.org.au/assets/Uploads/AusEggs_WED2020-x-Adam-Liaw_Egg-hoppers2_lores.jpg"
+    },
+    {
+      "name": "Kottu Roti",
+      "description": "Chopped flatbread stir-fried with vegetables, eggs, and meat.",
+      "image": "https://thumbs.dreamstime.com/b/traditional-sri-lankan-kothu-roti-garnished-fresh-vegetables-spices-close-up-delicious-popular-street-food-onions-356336358.jpg"
+    },
+    {
+      "name": "Pol Sambol",
+      "description": "A spicy coconut relish served as a side dish with rice or bread.",
+      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQaagYuFxp94foytQGT7N_B0NXMBMSOIw9lqA&s"
+    },
+    {
+      "name": "Fish Ambul Thiyal",
+      "description": "A tangy, spicy fish curry cooked with goraka (dried fruit).",
+      "image": "https://hemamagesh.com/wp-content/uploads/2019/06/ambul-thiyal-image.jpg"
+    }
+  ],
+  "generalTips": [
+    "Carry small cash for tuk-tuks and small purchases.",
+    "Drink bottled water only to avoid illness.",
+    "Respect local customs and dress modestly when visiting religious sites.",
+    "Try local fruits and street foods for authentic taste.",
+    "Use sunscreen and stay hydrated, especially when exploring outdoors.",
+    "Negotiate tuk-tuk fares before starting your journey.",
+    "Check weather forecasts, especially during monsoon seasons.",
+    "Learn basic Sinhala or Tamil phrases to connect with locals."
+  ]
+}

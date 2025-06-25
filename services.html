@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Explore World - Services</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap" rel="stylesheet" />
+  <style>
+    nav {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background: #fff;
+      padding: 1rem 2rem;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      z-index: 1000;
+    }
+    nav .nav-links a {
+      margin: 0 12px;
+      text-decoration: none;
+      color: #555;
+      transition: 0.3s;
+    }
+    nav .nav-links a.active {
+      color: var(--primary);
+      font-weight: 700;
+      border-bottom: 2px solid var(--primary);
+    }
+    nav .nav-links a:hover {
+      color: var(--primary);
+    }
+    nav .toggle {
+      cursor: pointer;
+      font-size: 1.2rem;
+      color: var(--primary);
+    }
+  </style>
+</head>
+<body style="margin:0; font-family:'Poppins', sans-serif; background:#f9faff; color:#222;">
+
+  <!-- Navbar -->
+ <nav>
+    <div style="font-weight:700; font-size:1.5rem; color:var(--primary);">🌍 Ceylon Waves</div>
+    <div class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="http://localhost/project/my_bookings.php">My Bookings</a> 
+      <a href="about.html" >Who We Are</a>
+      <a href="blogs.html" >Blogs</a>
+      <a href="journey.html">Journey</a>
+      <a href="services.html" class="active">Services</a>
+      <a href="weather-news.html">Weather & News</a>
+      <a href="contact.html">Contact</a>
+    </div>
+    <div
+      class="toggle"
+      onclick="toggleDarkMode()"
+      title="Toggle dark mode"
+      role="button"
+      tabindex="0"
+      aria-pressed="false"
+      aria-label="Toggle dark mode"
+    >
+      <i class="fas fa-moon"></i>
+    </div>
+</nav>
+
+  <main style="padding:6rem 2rem 2rem; max-width:900px; margin:auto;">
+
+    <h1 style="text-align:center; font-size:2.8rem; margin-bottom:2rem; color:#0066cc;">Our Services</h1>
+
+    <!-- Tab buttons -->
+    <div id="tabs" style="display:flex; justify-content:center; margin-bottom:2rem; gap:1rem;">
+      <button class="tab-btn active" style="padding:0.7rem 1.6rem; border:none; background:#0066cc; color:#fff; font-weight:600; border-radius:25px; cursor:pointer; box-shadow: 0 4px 12px rgba(0,102,204,0.4); transition: background 0.3s ease;">Accommodation</button>
+      <button class="tab-btn" style="padding:0.7rem 1.6rem; border:none; background:#ddd; color:#444; font-weight:600; border-radius:25px; cursor:pointer; transition: background 0.3s ease;">Pick Me</button>
+      <button class="tab-btn" style="padding:0.7rem 1.6rem; border:none; background:#ddd; color:#444; font-weight:600; border-radius:25px; cursor:pointer; transition: background 0.3s ease;">Walk with Guider</button>
+      <button class="tab-btn" style="padding:0.7rem 1.6rem; border:none; background:#ddd; color:#444; font-weight:600; border-radius:25px; cursor:pointer; transition: background 0.3s ease;">Emergency</button>
+    </div>
+
+    <!-- Tab contents -->
+    <section id="accommodation" class="tab-content" style="display:block; animation: fadeIn 0.6s ease;">
+      <h2 style="color:#004080; margin-bottom:1rem;">Accommodation</h2>
+      <p style="font-size:1.1rem; line-height:1.6; margin-bottom:1rem;">
+        Find comfortable and affordable stays tailored to your travel needs.
+        From cozy hostels to luxury hotels, Explore World offers you a wide variety of options with real-time availability and verified reviews.
+      </p>
+      <ul style="list-style:none; padding:0;">
+        <li style="margin-bottom:10px;">- Modern city hotels with free Wi-Fi and breakfast included.</li>
+        <li style="margin-bottom:10px;">- Budget-friendly hostels and guesthouses.</li>
+        <li style="margin-bottom:10px;">- Family-friendly apartments and vacation homes.</li>
+        <li style="margin-bottom:10px;">- 24/7 customer support for booking assistance.</li>
+      </ul>
+      <button style="background:#0066cc; color:#fff; border:none; padding:0.8rem 2rem; font-weight:600; border-radius:30px; cursor:pointer; box-shadow: 0 6px 15px rgba(0,102,204,0.5); transition: background 0.3s ease;">
+        Book Accommodation
+      </button>
+    </section>
+
+    <section id="pickme" class="tab-content" style="display:none; animation: fadeIn 0.6s ease;">
+      <h2 style="color:#004080; margin-bottom:1rem;">Pick Me</h2>
+      <p style="font-size:1.1rem; line-height:1.6; margin-bottom:1rem;">
+        Need a ride? Our reliable and safe transportation services are here to pick you up and drop you off wherever you want to go.
+        Choose from taxis, private cars, or shuttle services with transparent pricing and real-time tracking.
+      </p>
+      <ul style="list-style:none; padding:0;">
+        <li style="margin-bottom:10px;">- 24/7 availability across major cities.</li>
+        <li style="margin-bottom:10px;">- Experienced and vetted drivers.</li>
+        <li style="margin-bottom:10px;">- Real-time ride tracking via app.</li>
+        <li style="margin-bottom:10px;">- Easy cashless payments and invoicing.</li>
+      </ul>
+      <button style="background:#0066cc; color:#fff; border:none; padding:0.8rem 2rem; font-weight:600; border-radius:30px; cursor:pointer; box-shadow: 0 6px 15px rgba(0,102,204,0.5); transition: background 0.3s ease;">
+        Book a Ride
+      </button>
+    </section>
+
+    <section id="walkguider" class="tab-content" style="display:none; animation: fadeIn 0.6s ease;">
+      <h2 style="color:#004080; margin-bottom:1rem;">Walk with Guider / Need a Guider</h2>
+      <p style="font-size:1.1rem; line-height:1.6; margin-bottom:1rem;">
+        Explore new places with experienced local guides who know the secrets of the city.
+        Whether you want a casual walk or an in-depth cultural tour, our guides will make your journey unforgettable.
+      </p>
+      <ul style="list-style:none; padding:0;">
+        <li style="margin-bottom:10px;">- Certified local guides fluent in multiple languages.</li>
+        <li style="margin-bottom:10px;">- Customizable tours based on your interests.</li>
+        <li style="margin-bottom:10px;">- Small group or private guiding available.</li>
+        <li style="margin-bottom:10px;">- Safety and comfort prioritized at all times.</li>
+      </ul>
+    <?php session_start(); ?>
+<!-- Then inside walkguider section -->
+
+<?php if (isset($_SESSION['user_id'])): ?>
+  <button id="findGuideBtn" style="background:#0066cc; color:#fff; border:none; padding:0.8rem 2rem; font-weight:600; border-radius:30px; cursor:pointer; box-shadow: 0 6px 15px rgba(0,102,204,0.5); transition: background 0.3s ease;">
+    Find a Guide
+  </button>
+  <!-- Add your guide selection and booking logic here -->
+<?php else: ?>
+  <a href="http://localhost/project/login.html" style="background:#0066cc; color:#fff; padding:0.8rem 2rem; border-radius:30px; text-decoration:none; font-weight:600; display:inline-block; box-shadow: 0 6px 15px rgba(0,102,204,0.5);">
+    Login to Find a Guide
+  </a>
+<?php endif; ?>
+    </section>
+
+    <section id="emergency" class="tab-content" style="display:none; animation: fadeIn 0.6s ease;">
+      <h2 style="color:#004080; margin-bottom:1rem;">Emergency</h2>
+      <p style="font-size:1.1rem; line-height:1.6; margin-bottom:1rem;">
+        In case of emergency, get instant help and support through our dedicated emergency services.
+        From medical assistance to urgent travel support, we are here 24/7 for your safety.
+      </p>
+      <ul style="list-style:none; padding:0;">
+        <li style="margin-bottom:10px;">- 24/7 emergency hotline with immediate response.</li>
+        <li style="margin-bottom:10px;">- Connections to local hospitals and clinics.</li>
+        <li style="margin-bottom:10px;">- Travel insurance support and guidance.</li>
+        <li style="margin-bottom:10px;">- Safety alerts and updates for your location.</li>
+      </ul>
+      <button style="background:#d90429; color:#fff; border:none; padding:0.8rem 2rem; font-weight:600; border-radius:30px; cursor:pointer; box-shadow: 0 6px 15px rgba(217,4,41,0.5); transition: background 0.3s ease;">
+        Call Emergency
+      </button>
+    </section>
+
+  </main>
+
+  <script>
+    // Tab switching logic
+    const tabs = document.querySelectorAll('.tab-btn');
+    const contents = {
+      accommodation: document.getElementById('accommodation'),
+      pickme: document.getElementById('pickme'),
+      walkguider: document.getElementById('walkguider'),
+      emergency: document.getElementById('emergency')
+    };
+
+    tabs.forEach((tab, i) => {
+      tab.addEventListener('click', () => {
+        // Remove active from all tabs
+        tabs.forEach(t => {
+          t.classList.remove('active');
+          t.style.background = '#ddd';
+          t.style.color = '#444';
+          t.style.boxShadow = 'none';
+        });
+        // Hide all content
+        Object.values(contents).forEach(c => c.style.display = 'none');
+
+        // Set clicked tab active style
+        tab.classList.add('active');
+        tab.style.background = '#0066cc';
+        tab.style.color = '#fff';
+        tab.style.boxShadow = '0 4px 12px rgba(0,102,204,0.4)';
+
+        // Show content
+        if(i === 0) contents.accommodation.style.display = 'block';
+        else if(i === 1) contents.pickme.style.display = 'block';
+        else if(i === 2) contents.walkguider.style.display = 'block';
+        else if(i === 3) contents.emergency.style.display = 'block';
+      });
+    });
+  </script>
+
+  <style>
+    @keyframes fadeIn {
+      from {opacity:0; transform: translateY(20px);}
+      to {opacity:1; transform: translateY(0);}
+    }
+  </style>
+
+</body>
+</html>

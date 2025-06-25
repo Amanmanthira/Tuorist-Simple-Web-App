@@ -1,0 +1,747 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Explore World – Blogs</title>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap"
+    rel="stylesheet"
+  />
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+  />
+  <style>
+    :root {
+      --primary: #0083b0;
+      --secondary: #005f73;
+      --background: #fefefe;
+      --card-bg: #ffffff;
+      --comment-bg: #e0f7fa;
+      --dark-bg: #1b1b1b;
+      --dark-text: #f1f1f1;
+    }
+    body {
+      margin: 0;
+      font-family: "Poppins", sans-serif;
+      background: var(--background);
+      color: #222;
+      transition: background 0.4s, color 0.4s;
+    }
+    body.dark {
+      background: var(--dark-bg);
+      color: var(--dark-text);
+    }
+    nav {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background: #fff;
+      padding: 1rem 2rem;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      z-index: 1000;
+    }
+    nav .nav-links a {
+      margin: 0 12px;
+      text-decoration: none;
+      color: #555;
+      transition: 0.3s;
+    }
+    nav .nav-links a.active {
+      color: var(--primary);
+      font-weight: 700;
+      border-bottom: 2px solid var(--primary);
+    }
+    nav .nav-links a:hover {
+      color: var(--primary);
+    }
+    nav .toggle {
+      cursor: pointer;
+      font-size: 1.2rem;
+      color: var(--primary);
+    }
+    main {
+      padding: 6rem 2rem 2rem;
+      max-width: 1000px;
+      margin: auto;
+    }
+    h1 {
+      text-align: center;
+      font-size: 2.8rem;
+      margin-bottom: 2rem;
+      color: var(--primary);
+    }
+    .search-bar {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 2rem;
+    }
+    .search-bar input {
+      padding: 0.7rem 1rem;
+      border-radius: 30px;
+      border: 1px solid #ccc;
+      width: 80%;
+      max-width: 500px;
+      font-size: 1rem;
+    }
+    .blog-card {
+      background: var(--card-bg);
+      padding: 2rem;
+      border-radius: 12px;
+      box-shadow: 0 8px 30px rgba(0, 131, 176, 0.1);
+      margin-bottom: 2rem;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      outline: none;
+    }
+    .blog-card:hover,
+    .blog-card:focus {
+      transform: translateY(-5px);
+      box-shadow: 0 12px 40px rgba(0, 131, 176, 0.15);
+    }
+    .blog-card h2 {
+      margin-top: 0;
+      color: var(--secondary);
+    }
+    .blog-card p {
+      line-height: 1.6;
+    }
+    .blog-card button {
+      margin-top: 1rem;
+      padding: 0.6rem 1.5rem;
+      background: var(--primary);
+      color: white;
+      border: none;
+      border-radius: 30px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+    .blog-card button:hover,
+    .blog-card button:focus {
+      background: #00a7d3;
+      outline: none;
+    }
+    #comments {
+      background: var(--comment-bg);
+      padding: 2rem;
+      border-radius: 15px;
+      max-width: 800px;
+      margin: 3rem auto 2rem;
+    }
+    form input,
+    form textarea {
+      width: 100%;
+      padding: 0.8rem;
+      border-radius: 8px;
+      border: 1px solid var(--secondary);
+      font-size: 1rem;
+      margin-bottom: 0.7rem;
+      font-family: "Poppins", sans-serif;
+    }
+    form button {
+      margin-top: 1rem;
+      padding: 0.6rem 1.5rem;
+      background: var(--secondary);
+      color: white;
+      border: none;
+      border-radius: 30px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+    form button:hover,
+    form button:focus {
+      background: #0081a0;
+      outline: none;
+    }
+    .comments-list {
+      margin-top: 2rem;
+    }
+    .comment {
+      background: #fff;
+      padding: 1rem;
+      margin-bottom: 1rem;
+      border-radius: 8px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+    }
+    .comment .meta {
+      font-size: 0.9rem;
+      color: #555;
+      margin-bottom: 0.5rem;
+    }
+    .comment .meta span {
+      font-weight: 600;
+    }
+    .back-to-top {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background: var(--primary);
+      color: white;
+      border: none;
+      padding: 0.8rem 1rem;
+      border-radius: 50%;
+      font-size: 1.2rem;
+      cursor: pointer;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+      z-index: 999;
+    }
+    .dark nav {
+      background: #222;
+    }
+    .dark nav a {
+      color: #ccc;
+    }
+    .dark nav a.active {
+      color: #00cfe8;
+    }
+    .dark .blog-card,
+    .dark .comment {
+      background: #2a2a2a;
+      color: #f1f1f1;
+    }
+    .dark #comments {
+      background: #333;
+    }
+    .dark form input,
+    .dark form textarea {
+      background: #444;
+      color: white;
+      border-color: #666;
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <div style="font-weight:700; font-size:1.5rem; color:var(--primary);">🌍 Ceylon Waves</div>
+    <div class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="about.html">Who We Are</a>
+      <a href="blogs.html" class="active">Blogs</a>
+      <a href="journey.html">Journey</a>
+      <a href="services.html">Services</a>
+      <a href="weather-news.html">Weather & News</a>
+      <a href="contact.html">Contact</a>
+    </div>
+    <div
+      class="toggle"
+      onclick="toggleDarkMode()"
+      title="Toggle dark mode"
+      role="button"
+      tabindex="0"
+      aria-pressed="false"
+      aria-label="Toggle dark mode"
+    >
+      <i class="fas fa-moon"></i>
+    </div>
+  </nav>
+
+  <main>
+    <h1>Travel Blogs & Stories</h1>
+
+    <div class="search-bar">
+      <input
+        type="text"
+        id="searchInput"
+        onkeyup="filterBlogs()"
+        placeholder="Search blogs..."
+        aria-label="Search blogs"
+      />
+    </div>
+
+    <!-- Existing Blogs -->
+    <article class="blog-card expandable" tabindex="0" aria-label="Blog about Sri Lanka’s Cultural Triangle" id="blog1">
+      <h2>🌴 Discovering Sri Lanka’s Cultural Triangle</h2>
+      <p>
+        Sri Lanka’s Cultural Triangle connects the ancient cities of Anuradhapura, Polonnaruwa, and the majestic Sigiriya rock fortress.
+        <span class="more-content" style="display:none;">
+          These UNESCO World Heritage sites offer a window into a 2000-year-old civilization. Climb Sigiriya at sunrise, visit cave temples in Dambulla, and marvel at royal ruins in Polonnaruwa. Guided tours can reveal hidden frescoes and stories lost to time.
+        </span>
+      </p>
+      <button
+        class="read-more-btn"
+        onclick="toggleReadMore(this)"
+        aria-expanded="false"
+        aria-controls="more-content-blog1"
+      >
+        Read More
+      </button>
+
+      <!-- Comments for blog1 -->
+      <section id="comments-blog1" aria-label="Comments for Sri Lanka’s Cultural Triangle">
+        <h3>💬 Leave a Comment</h3>
+        <form onsubmit="submitComment(event, 'blog1')" aria-describedby="form-msg-blog1">
+          <input
+            type="text"
+            id="name-blog1"
+            placeholder="Your name"
+            required
+            aria-required="true"
+            aria-label="Your name"
+            autocomplete="name"
+          />
+          <textarea
+            id="comment-blog1"
+            placeholder="Your comment"
+            required
+            rows="4"
+            aria-required="true"
+            aria-label="Your comment"
+          ></textarea>
+          <button type="submit">Submit</button>
+          <div
+            id="form-msg-blog1"
+            role="alert"
+            aria-live="polite"
+            style="margin-top: 8px; font-weight: 600; color: #d32f2f; display: none;"
+          ></div>
+        </form>
+        <div id="comments-list-blog1" class="comments-list">
+          <h4>Recent Comments</h4>
+        </div>
+      </section>
+    </article>
+
+    <article class="blog-card expandable" tabindex="0" aria-label="Blog about Train Ride Through the Tea Hills of Ella" id="blog2">
+      <h2>🏞️ Train Ride Through the Tea Hills of Ella</h2>
+      <p>
+        The scenic train ride from Kandy to Ella is among the most beautiful railway journeys globally.
+        <span class="more-content" style="display:none;">
+          Passing lush green tea plantations, cascading waterfalls, and misty mountains, the ride offers unforgettable views. Stop at Ella town to hike Little Adam’s Peak and visit Nine Arches Bridge.
+        </span>
+      </p>
+      <button
+        class="read-more-btn"
+        onclick="toggleReadMore(this)"
+        aria-expanded="false"
+        aria-controls="more-content-blog2"
+      >
+        Read More
+      </button>
+
+      <!-- Comments for blog2 -->
+      <section id="comments-blog2" aria-label="Comments for Train Ride Through the Tea Hills of Ella">
+        <h3>💬 Leave a Comment</h3>
+        <form onsubmit="submitComment(event, 'blog2')" aria-describedby="form-msg-blog2">
+          <input
+            type="text"
+            id="name-blog2"
+            placeholder="Your name"
+            required
+            aria-required="true"
+            aria-label="Your name"
+            autocomplete="name"
+          />
+          <textarea
+            id="comment-blog2"
+            placeholder="Your comment"
+            required
+            rows="4"
+            aria-required="true"
+            aria-label="Your comment"
+          ></textarea>
+          <button type="submit">Submit</button>
+          <div
+            id="form-msg-blog2"
+            role="alert"
+            aria-live="polite"
+            style="margin-top: 8px; font-weight: 600; color: #d32f2f; display: none;"
+          ></div>
+        </form>
+        <div id="comments-list-blog2" class="comments-list">
+          <h4>Recent Comments</h4>
+        </div>
+      </section>
+    </article>
+
+    <article class="blog-card expandable" tabindex="0" aria-label="Blog about the Beaches of Mirissa" id="blog3">
+      <h2>🏖️ Beaches of Mirissa: Sun, Surf, and Serenity</h2>
+      <p>
+        Mirissa is a slice of paradise on Sri Lanka’s southern coast.
+        <span class="more-content" style="display:none;">
+          With golden sands and turquoise waters, it’s perfect for swimming, surfing, and whale watching. At night, beachside shacks serve fresh seafood with a backdrop of twinkling stars.
+        </span>
+      </p>
+      <button
+        class="read-more-btn"
+        onclick="toggleReadMore(this)"
+        aria-expanded="false"
+        aria-controls="more-content-blog3"
+      >
+        Read More
+      </button>
+
+      <!-- Comments for blog3 -->
+      <section id="comments-blog3" aria-label="Comments for Beaches of Mirissa">
+        <h3>💬 Leave a Comment</h3>
+        <form onsubmit="submitComment(event, 'blog3')" aria-describedby="form-msg-blog3">
+          <input
+            type="text"
+            id="name-blog3"
+            placeholder="Your name"
+            required
+            aria-required="true"
+            aria-label="Your name"
+            autocomplete="name"
+          />
+          <textarea
+            id="comment-blog3"
+            placeholder="Your comment"
+            required
+            rows="4"
+            aria-required="true"
+            aria-label="Your comment"
+          ></textarea>
+          <button type="submit">Submit</button>
+          <div
+            id="form-msg-blog3"
+            role="alert"
+            aria-live="polite"
+            style="margin-top: 8px; font-weight: 600; color: #d32f2f; display: none;"
+          ></div>
+        </form>
+        <div id="comments-list-blog3" class="comments-list">
+          <h4>Recent Comments</h4>
+        </div>
+      </section>
+    </article>
+
+    <!-- New Blogs Start -->
+
+    <article class="blog-card expandable" tabindex="0" aria-label="Blog about Hiking in Patagonia" id="blog4">
+      <h2>🏔️ Exploring the Trails of Patagonia</h2>
+      <p>
+        Patagonia offers some of the most breathtaking hiking experiences on the planet.
+        <span class="more-content" style="display:none;">
+          From towering glaciers to pristine lakes, the trails here challenge and inspire adventurers worldwide. Whether trekking the iconic W Circuit or exploring lesser-known paths, the dramatic landscapes leave lasting memories.
+        </span>
+      </p>
+      <button
+        class="read-more-btn"
+        onclick="toggleReadMore(this)"
+        aria-expanded="false"
+        aria-controls="more-content-blog4"
+      >
+        Read More
+      </button>
+
+      <!-- Comments for blog4 -->
+      <section id="comments-blog4" aria-label="Comments for Hiking in Patagonia">
+        <h3>💬 Leave a Comment</h3>
+        <form onsubmit="submitComment(event, 'blog4')" aria-describedby="form-msg-blog4">
+          <input
+            type="text"
+            id="name-blog4"
+            placeholder="Your name"
+            required
+            aria-required="true"
+            aria-label="Your name"
+            autocomplete="name"
+          />
+          <textarea
+            id="comment-blog4"
+            placeholder="Your comment"
+            required
+            rows="4"
+            aria-required="true"
+            aria-label="Your comment"
+          ></textarea>
+          <button type="submit">Submit</button>
+          <div
+            id="form-msg-blog4"
+            role="alert"
+            aria-live="polite"
+            style="margin-top: 8px; font-weight: 600; color: #d32f2f; display: none;"
+          ></div>
+        </form>
+        <div id="comments-list-blog4" class="comments-list">
+          <h4>Recent Comments</h4>
+        </div>
+      </section>
+    </article>
+
+    <article class="blog-card expandable" tabindex="0" aria-label="Blog about Street Food in Bangkok" id="blog5">
+      <h2>🍜 Street Food Adventures in Bangkok</h2>
+      <p>
+        Bangkok’s street food scene is a vibrant explosion of flavors and aromas.
+        <span class="more-content" style="display:none;">
+          From spicy papaya salad to savory grilled satay, exploring street markets offers a delicious way to experience Thai culture. Don’t miss the night markets around Sukhumvit and Chinatown for unforgettable culinary delights.
+        </span>
+      </p>
+      <button
+        class="read-more-btn"
+        onclick="toggleReadMore(this)"
+        aria-expanded="false"
+        aria-controls="more-content-blog5"
+      >
+        Read More
+      </button>
+
+      <!-- Comments for blog5 -->
+      <section id="comments-blog5" aria-label="Comments for Street Food in Bangkok">
+        <h3>💬 Leave a Comment</h3>
+        <form onsubmit="submitComment(event, 'blog5')" aria-describedby="form-msg-blog5">
+          <input
+            type="text"
+            id="name-blog5"
+            placeholder="Your name"
+            required
+            aria-required="true"
+            aria-label="Your name"
+            autocomplete="name"
+          />
+          <textarea
+            id="comment-blog5"
+            placeholder="Your comment"
+            required
+            rows="4"
+            aria-required="true"
+            aria-label="Your comment"
+          ></textarea>
+          <button type="submit">Submit</button>
+          <div
+            id="form-msg-blog5"
+            role="alert"
+            aria-live="polite"
+            style="margin-top: 8px; font-weight: 600; color: #d32f2f; display: none;"
+          ></div>
+        </form>
+        <div id="comments-list-blog5" class="comments-list">
+          <h4>Recent Comments</h4>
+        </div>
+      </section>
+    </article>
+
+    <article class="blog-card expandable" tabindex="0" aria-label="Blog about Exploring Ancient Ruins in Rome" id="blog6">
+      <h2>🏛️ Exploring Ancient Ruins in Rome</h2>
+      <p>
+        Rome is a city where history comes alive in every corner.
+        <span class="more-content" style="display:none;">
+          Wander through the Colosseum, Roman Forum, and Palatine Hill to step back in time. Each ruin tells stories of emperors, gladiators, and a civilization that shaped the world.
+        </span>
+      </p>
+      <button
+        class="read-more-btn"
+        onclick="toggleReadMore(this)"
+        aria-expanded="false"
+        aria-controls="more-content-blog6"
+      >
+        Read More
+      </button>
+
+      <!-- Comments for blog6 -->
+      <section id="comments-blog6" aria-label="Comments for Exploring Ancient Ruins in Rome">
+        <h3>💬 Leave a Comment</h3>
+        <form onsubmit="submitComment(event, 'blog6')" aria-describedby="form-msg-blog6">
+          <input
+            type="text"
+            id="name-blog6"
+            placeholder="Your name"
+            required
+            aria-required="true"
+            aria-label="Your name"
+            autocomplete="name"
+          />
+          <textarea
+            id="comment-blog6"
+            placeholder="Your comment"
+            required
+            rows="4"
+            aria-required="true"
+            aria-label="Your comment"
+          ></textarea>
+          <button type="submit">Submit</button>
+          <div
+            id="form-msg-blog6"
+            role="alert"
+            aria-live="polite"
+            style="margin-top: 8px; font-weight: 600; color: #d32f2f; display: none;"
+          ></div>
+        </form>
+        <div id="comments-list-blog6" class="comments-list">
+          <h4>Recent Comments</h4>
+        </div>
+      </section>
+    </article>
+
+    <article class="blog-card expandable" tabindex="0" aria-label="Blog about Safari Experience in Kenya" id="blog7">
+      <h2>🦁 Safari Experience in Kenya</h2>
+      <p>
+        Kenya’s Maasai Mara offers one of the best safari experiences in Africa.
+        <span class="more-content" style="display:none;">
+          Witness the Great Migration, see lions, elephants, and cheetahs in their natural habitat, and enjoy traditional Maasai culture. A true adventure for wildlife lovers.
+        </span>
+      </p>
+      <button
+        class="read-more-btn"
+        onclick="toggleReadMore(this)"
+        aria-expanded="false"
+        aria-controls="more-content-blog7"
+      >
+        Read More
+      </button>
+
+      <!-- Comments for blog7 -->
+      <section id="comments-blog7" aria-label="Comments for Safari Experience in Kenya">
+        <h3>💬 Leave a Comment</h3>
+        <form onsubmit="submitComment(event, 'blog7')" aria-describedby="form-msg-blog7">
+          <input
+            type="text"
+            id="name-blog7"
+            placeholder="Your name"
+            required
+            aria-required="true"
+            aria-label="Your name"
+            autocomplete="name"
+          />
+          <textarea
+            id="comment-blog7"
+            placeholder="Your comment"
+            required
+            rows="4"
+            aria-required="true"
+            aria-label="Your comment"
+          ></textarea>
+          <button type="submit">Submit</button>
+          <div
+            id="form-msg-blog7"
+            role="alert"
+            aria-live="polite"
+            style="margin-top: 8px; font-weight: 600; color: #d32f2f; display: none;"
+          ></div>
+        </form>
+        <div id="comments-list-blog7" class="comments-list">
+          <h4>Recent Comments</h4>
+        </div>
+      </section>
+    </article>
+
+  </main>
+
+  <button
+    class="back-to-top"
+    onclick="window.scrollTo({ top: 0, behavior: 'smooth' })"
+    aria-label="Back to top"
+  >
+    <i class="fas fa-arrow-up"></i>
+  </button>
+
+  <script>
+    // Toggle dark mode
+    function toggleDarkMode() {
+      const body = document.body;
+      const toggleBtn = document.querySelector(".toggle");
+      body.classList.toggle("dark");
+      const isDark = body.classList.contains("dark");
+      toggleBtn.setAttribute("aria-pressed", isDark.toString());
+      toggleBtn.innerHTML = isDark
+        ? '<i class="fas fa-sun"></i>'
+        : '<i class="fas fa-moon"></i>';
+    }
+
+    // Read more toggle for blogs
+    function toggleReadMore(button) {
+      const paragraph = button.previousElementSibling;
+      const moreContent = paragraph.querySelector(".more-content");
+      const isHidden = moreContent.style.display === "none";
+
+      if (isHidden) {
+        moreContent.style.display = "inline";
+        button.innerText = "Read Less";
+        button.setAttribute("aria-expanded", "true");
+      } else {
+        moreContent.style.display = "none";
+        button.innerText = "Read More";
+        button.setAttribute("aria-expanded", "false");
+      }
+    }
+
+    // Search filter function
+    function filterBlogs() {
+      const input = document.getElementById("searchInput");
+      const filter = input.value.toLowerCase();
+      const blogs = document.querySelectorAll(".blog-card");
+
+      blogs.forEach((blog) => {
+        const title = blog.querySelector("h2").textContent.toLowerCase();
+        const content = blog.querySelector("p").textContent.toLowerCase();
+
+        if (title.includes(filter) || content.includes(filter)) {
+          blog.style.display = "";
+        } else {
+          blog.style.display = "none";
+        }
+      });
+    }
+
+    // Comments functionality with localStorage persistence
+    function submitComment(event, blogId) {
+      event.preventDefault();
+      const nameInput = document.getElementById(`name-${blogId}`);
+      const commentInput = document.getElementById(`comment-${blogId}`);
+      const formMsg = document.getElementById(`form-msg-${blogId}`);
+      const commentsList = document.getElementById(`comments-list-${blogId}`);
+
+      const name = nameInput.value.trim();
+      const comment = commentInput.value.trim();
+
+      if (!name || !comment) {
+        formMsg.style.display = "block";
+        formMsg.textContent = "Please enter both your name and comment.";
+        return;
+      }
+
+      formMsg.style.display = "none";
+
+      const commentObj = {
+        name,
+        comment,
+        date: new Date().toLocaleString(),
+      };
+
+      // Save comments to localStorage
+      const storedComments =
+        JSON.parse(localStorage.getItem(`comments-${blogId}`)) || [];
+      storedComments.push(commentObj);
+      localStorage.setItem(`comments-${blogId}`, JSON.stringify(storedComments));
+
+      // Clear inputs
+      nameInput.value = "";
+      commentInput.value = "";
+
+      // Append comment to DOM
+      appendComment(commentObj, commentsList);
+    }
+
+    function appendComment(commentObj, container) {
+      const commentDiv = document.createElement("div");
+      commentDiv.classList.add("comment");
+      commentDiv.innerHTML = `
+        <div class="meta"><span>${commentObj.name}</span> - <em>${commentObj.date}</em></div>
+        <div class="text">${commentObj.comment}</div>
+      `;
+      container.appendChild(commentDiv);
+    }
+
+    // Load comments from localStorage on page load
+    window.addEventListener("DOMContentLoaded", () => {
+      const blogs = document.querySelectorAll(".blog-card");
+
+      blogs.forEach((blog) => {
+        const blogId = blog.id;
+        const commentsList = document.getElementById(`comments-list-${blogId}`);
+        if (!commentsList) return;
+
+        const storedComments =
+          JSON.parse(localStorage.getItem(`comments-${blogId}`)) || [];
+        storedComments.forEach((comment) =>
+          appendComment(comment, commentsList)
+        );
+      });
+    });
+  </script>
+</body>
+</html>
