@@ -12,15 +12,18 @@
     rel="stylesheet"
     href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
   />
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600;700&family=Great+Vibes&display=swap" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
   <style>
     :root {
-      --primary: #0083b0;
-      --secondary: #005f73;
-      --background: #fefefe;
+      --primary: #7b1fa2; /* Deep Maroon */
+      --secondary: #004d40; /* Dark Green */
+      --accent: #f9a825; /* Golden Yellow */
+      --bg: #fff8f0;
+      --text: #2f2f2f;
       --card-bg: #ffffff;
-      --comment-bg: #e0f7fa;
-      --dark-bg: #1b1b1b;
-      --dark-text: #f1f1f1;
+      --shadow: rgba(0, 0, 0, 0.1);
     }
     body {
       margin: 0;
@@ -215,29 +218,46 @@
   </style>
 </head>
 <body>
-  <nav>
-    <div style="font-weight:700; font-size:1.5rem; color:var(--primary);">🌍 Ceylon Waves</div>
-    <div class="nav-links">
-      <a href="index.html">Home</a>
-      <a href="about.html">Who We Are</a>
-      <a href="blogs.html" class="active">Blogs</a>
-      <a href="journey.html">Journey</a>
-      <a href="services.html">Services</a>
-      <a href="weather-news.html">Weather & News</a>
-      <a href="contact.html">Contact</a>
-    </div>
-    <div
-      class="toggle"
-      onclick="toggleDarkMode()"
-      title="Toggle dark mode"
-      role="button"
-      tabindex="0"
-      aria-pressed="false"
-      aria-label="Toggle dark mode"
-    >
-      <i class="fas fa-moon"></i>
-    </div>
-  </nav>
+  <!-- Navbar -->
+  <nav style="
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background: linear-gradient(to right, #ffffffcc, #ffffffdd), url('https://beyondthewesterngaze.com/wp-content/uploads/2020/08/mask-3235633_1280.jpg?w=1280') repeat;
+  background-size: 200px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.07);
+  z-index: 999;
+  padding: 1rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: 'Quicksand', sans-serif;
+  backdrop-filter: blur(6px);
+">
+
+  <!-- Logo / Brand -->
+  <div style="font-weight: 800; font-size: 1.6rem; color: var(--primary); display: flex; align-items: center;">
+    <img src="https://beyondthewesterngaze.com/wp-content/uploads/2020/08/mask-3235633_1280.jpg?w=1280" alt="logo" style="width:30px; margin-right:10px;"> Explore Srilanka
+  </div>
+
+  <!-- Links -->
+  <div class="nav-links" style="display: flex; gap: 1.2rem;">
+    <a href="index.html" style="text-decoration: none; color: #333; font-weight: 600; position: relative; transition: color 0.3s;">
+      Home
+    </a>
+    <a href="http://localhost/project/my_bookings.php" style="text-decoration: none; color: #333; font-weight: 600; position: relative;">My Bookings</a>
+    <a href="about.html" style="text-decoration: none; color: #333; font-weight: 600; position: relative;">Who We Are</a>
+    <a href="blogs.html" class="active" style="text-decoration: none; color: #333; font-weight: 600; position: relative;">Blogs</a>
+    <a href="journey.php" style="text-decoration: none; color: #333; font-weight: 600; position: relative;">Events</a>
+    <a href="Destinations&Hotels.php"  style="text-decoration: none; ; font-weight: 700; position: relative;">
+      Hotels & Destinations
+    </a>
+    <a href="services.html" style="text-decoration: none; color: #333; font-weight: 600; position: relative;">Services</a>
+    <a href="weather-news.html" style="text-decoration: none; color: #333; font-weight: 600; position: relative;">Weather & News</a>
+    <a href="contact.html" style="text-decoration: none; color: #333; font-weight: 600; position: relative;">Contact</a>
+  </div>
+</nav>
 
   <main>
     <h1>Travel Blogs & Stories</h1>

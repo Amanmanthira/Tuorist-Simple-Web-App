@@ -13,11 +13,26 @@ if ($conn->connect_error) {
 $user_id = $_SESSION['user_id'];
 
 $sql = "
-    SELECT o.booking_date, o.tour_type, o.created_at, g.name AS guide_name, g.language
-    FROM orders o
-    JOIN guides g ON o.guide_id = g.id
-    WHERE o.user_id = ?
-    ORDER BY o.created_at DESC
+    SELECT 
+      b.id,
+      b.booking_date,
+      b.tour_type,
+      b.room_type,
+      b.start_date,
+      b.end_date,
+      b.people_count,
+      b.days,
+      b.created_at,
+      b.reference_number,          
+      g.name AS guide_name,
+      g.language,
+      h.name AS hotel_name,
+      h.location AS hotel_location
+    FROM guide_hotel_bookings b
+    JOIN guides g ON b.guide_id = g.id
+    JOIN hotels h ON b.hotel_id = h.id
+    WHERE b.user_id = ?
+    ORDER BY b.created_at DESC
 ";
 
 $stmt = $conn->prepare($sql);
@@ -26,12 +41,16 @@ $stmt->execute();
 $result = $stmt->get_result();
 ?>
 
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>My Bookings</title>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600;700&family=Great+Vibes&display=swap" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
@@ -48,37 +67,6 @@ $result = $stmt->get_result();
     background: linear-gradient(to right, #f8f9fb, #eef3f7);
     color: #333;
     padding-top: 80px;
-  }
-
-  nav {
-    position: fixed;
-    top: 0; left: 0; right: 0;
-    background: white;
-    padding: 1rem 2rem;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    z-index: 1000;
-  }
-
-  nav .logo {
-    font-size: 1.6rem;
-    color: #0066cc;
-    font-weight: 700;
-  }
-
-  nav .nav-links a {
-    margin: 0 10px;
-    color: #444;
-    font-weight: 500;
-    position: relative;
-  }
-
-  nav a:hover,
-  nav a.active {
-    color: #0066cc;
-    font-weight: 600;
   }
 
   h1 {
@@ -193,23 +181,47 @@ $result = $stmt->get_result();
 </style>
 </head>
 <body>
+<!-- Navbar -->
+  <nav style="
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background: linear-gradient(to right, #ffffffcc, #ffffffdd), url('https://beyondthewesterngaze.com/wp-content/uploads/2020/08/mask-3235633_1280.jpg?w=1280') repeat;
+  background-size: 200px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.07);
+  z-index: 999;
+  padding: 1rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: 'Quicksand', sans-serif;
+  backdrop-filter: blur(6px);
+">
 
-<nav>
-  <div class="logo">🌍 Explore World</div>
-  <div class="nav-links">
-    <a href="index.html">Home</a>
-    <a href="my_bookings.php" class="active">My Bookings</a>
-    <a href="about.html">Who We Are</a>
-    <a href="blogs.html">Blogs</a>
-    <a href="journey.html">Journey</a>
-    <a href="services.html">Services</a>
-    <a href="weather-news.html">Weather & News</a>
-    <a href="contact.html">Contact</a>
+  <!-- Logo / Brand -->
+  <div style="font-weight: 800; font-size: 1.6rem; color: var(--primary); display: flex; align-items: center;">
+    <img src="https://beyondthewesterngaze.com/wp-content/uploads/2020/08/mask-3235633_1280.jpg?w=1280" alt="logo" style="width:30px; margin-right:10px;"> Explore Srilanka
   </div>
-  <div class="toggle" onclick="toggleDarkMode()" title="Toggle dark mode">
-    <i class="fas fa-moon"></i>
+
+  <!-- Links -->
+  <div class="nav-links" style="display: flex; gap: 1.2rem;">
+    <a href="index.html" style="text-decoration: none; color: #333; font-weight: 600; position: relative; transition: color 0.3s;">
+      Home
+    </a>
+    <a href="http://localhost/project/my_bookings.php" style="text-decoration: none; color: #333; font-weight: 600; position: relative;">My Bookings</a>
+    <a href="about.html" style="text-decoration: none; color: #333; font-weight: 600; position: relative;">Who We Are</a>
+    <a href="blogs.html" style="text-decoration: none; color: #333; font-weight: 600; position: relative;">Blogs</a>
+    <a href="journey.html" style="text-decoration: none; color: #333; font-weight: 600; position: relative;">Journey</a>
+    <a href="Destinations&Hotels.php" class="active" style="text-decoration: none; color: var(--primary); font-weight: 700; position: relative;">
+      Hotels & Destinations
+    </a>
+    <a href="services.html" style="text-decoration: none; color: #333; font-weight: 600; position: relative;">Services</a>
+    <a href="weather-news.html" style="text-decoration: none; color: #333; font-weight: 600; position: relative;">Weather & News</a>
+    <a href="contact.html" style="text-decoration: none; color: #333; font-weight: 600; position: relative;">Contact</a>
   </div>
 </nav>
+
 
 <h1>My Bookings</h1>
 <div class="center-button">
@@ -220,10 +232,16 @@ $result = $stmt->get_result();
   <div class="bookings-container">
     <?php while ($booking = $result->fetch_assoc()): ?>
       <div class="booking-card">
-        <h2><?= htmlspecialchars($booking['guide_name']) ?></h2>
+        <h2>Guide: <?= htmlspecialchars($booking['guide_name']) ?></h2>
+          <p><strong>Reference No:</strong> <?= htmlspecialchars($booking['reference_number']) ?></p>
         <p><strong>Language:</strong> <?= htmlspecialchars($booking['language']) ?></p>
+        <p><strong>Hotel:</strong> <?= htmlspecialchars($booking['hotel_name']) ?> (<?= htmlspecialchars($booking['hotel_location']) ?>)</p>
+        <p><strong>Room Type:</strong> <?= htmlspecialchars($booking['room_type']) ?></p>
         <p><strong>Tour Type:</strong> <?= htmlspecialchars(ucfirst($booking['tour_type'])) ?></p>
-        <p><strong>Date of Tour:</strong> <?= htmlspecialchars($booking['booking_date']) ?></p>
+        <p><strong>Start Date:</strong> <?= htmlspecialchars($booking['start_date']) ?></p>
+        <p><strong>End Date:</strong> <?= htmlspecialchars($booking['end_date']) ?></p>
+        <p><strong>Days:</strong> <?= htmlspecialchars($booking['days']) ?></p>
+        <p><strong>People:</strong> <?= htmlspecialchars($booking['people_count']) ?></p>
         <p><small>Booked on: <?= date("F j, Y, g:i A", strtotime($booking['created_at'])) ?></small></p>
       </div>
     <?php endwhile; ?>
@@ -231,6 +249,7 @@ $result = $stmt->get_result();
 <?php else: ?>
   <p class="empty-message">You have no bookings yet. <a href="booking.php">Book a guide now</a>.</p>
 <?php endif; ?>
+
 
 <a href="logout.php" class="btn-logout">Logout</a>
 
