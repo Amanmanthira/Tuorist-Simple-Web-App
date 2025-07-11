@@ -1,5 +1,1 @@
-![screencapture-localhost-project-2025-06-25-17_37_59](https://github.com/user-attachments/assets/a071d887-d4e4-491e-8d85-d4ca3f4d39b0)
-![screencapture-localhost-project-journey-html-2025-06-25-17_38_53](https://github.com/user-attachments/assets/870cfb30-7a00-4f3d-bbc0-68a3008c8cbf)
-![screencapture-localhost-project-weather-news-html-2025-06-25-17_39_08](https://github.com/user-attachments/assets/944f9314-339c-45ac-807d-ce570217d6c7)
-![screencapture-localhost-project-login-html-2025-06-25-17_38_16](https://github.com/user-attachments/assets/4089ed6b-fc43-4431-a052-36f262f19b19)
-![screencapture-localhost-project-blogs-html-2025-06-25-17_38_34](https://github.com/user-attachments/assets/97f6b012-705e-4a83-a72f-234402d443c2)
+
