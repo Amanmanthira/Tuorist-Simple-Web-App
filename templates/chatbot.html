@@ -3,14 +3,12 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Ceylonwave Chatbot</title>
+  <title>Chatbot</title>
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap');
-
     * {
       box-sizing: border-box;
     }
-
     body {
       font-family: 'Montserrat', sans-serif;
       margin: 0;
@@ -22,9 +20,8 @@
       user-select: none;
       position: relative;
       overflow: hidden;
+      cursor: none;
     }
-
-    /* Blurred slideshow background */
     body::before {
       content: "";
       position: absolute;
@@ -36,7 +33,6 @@
       filter: blur(7px) brightness(0.8);
       transition: background-image 1s ease-in-out;
     }
-
     @keyframes slideShow {
       0%    { background-image: url('https://ik.imgkit.net/3vlqs5axxjf/TW-Asia/ik-seo/uploadedImages/Industry/Destinations(1)/GettyImages-1129078118/Is-it-safe-to-travel-to-Sri-Lanka-right-now%3F.jpg?tr=w-780%2Ch-440%2Cfo-auto'); }
       25%   { background-image: url('https://www.barcelo.com/guia-turismo/wp-content/uploads/2024/03/que-visitar-en-sri-lanka.jpg'); }
@@ -44,7 +40,6 @@
       75%   { background-image: url('https://breaking-the-borders.com/wp-content/uploads/2024/01/sri-lanka-sigiriya.webp'); }
       100%  { background-image: url('https://www.andbeyond.com/wp-content/uploads/sites/5/sri-lankan-leopard-yala.jpg'); }
     }
-
     body::after {
       content: "";
       position: absolute;
@@ -52,7 +47,6 @@
       background: rgba(255, 255, 255, 0.2);
       z-index: -1;
     }
-
     #chat-container {
       background: white;
       width: 420px;
@@ -64,28 +58,27 @@
       flex-direction: column;
       overflow: hidden;
     }
-
     header {
-      background: #3a6df0;
+      background: linear-gradient(to right, #6e260e, #a47449);
       padding: 25px;
-      color: white;
+      color: #ffe6b0;
       font-weight: 700;
       font-size: 1.5rem;
       text-align: center;
       letter-spacing: 1px;
+      font-family: 'Georgia', serif;
+      text-shadow: 1px 1px 3px #000;
     }
-
     #chat-box {
       flex: 1;
       padding: 20px;
       overflow-y: auto;
-      background: #f0f5ff;
+      background: #fff9ef;
       display: flex;
       flex-direction: column;
       gap: 15px;
       scroll-behavior: smooth;
     }
-
     .message {
       max-width: 75%;
       padding: 15px 20px;
@@ -97,55 +90,48 @@
       opacity: 0;
       transform: translateY(10px);
     }
-
     @keyframes fadeInUp {
       to {
         opacity: 1;
         transform: translateY(0);
       }
     }
-
     .user {
-      background: #3a6df0;
+      background: #6e260e;
       color: white;
       align-self: flex-end;
       border-bottom-right-radius: 5px;
-      box-shadow: 0 8px 15px rgb(58 109 240 / 0.4);
+      box-shadow: 0 8px 15px rgba(110,38,14,0.4);
     }
-
     .bot {
       background: white;
-      color: #3a6df0;
+      color: #6e260e;
       align-self: flex-start;
       border-bottom-left-radius: 5px;
-      box-shadow: 0 8px 15px rgb(58 109 240 / 0.2);
+      box-shadow: 0 8px 15px rgba(110,38,14,0.2);
     }
-
     #input-area {
       display: flex;
       padding: 20px;
-      background: #e7efff;
+      background: #fbe8d3;
       border-top: 1px solid #ddd;
       gap: 15px;
     }
-
     #user-input {
       flex: 1;
       border: none;
       border-radius: 25px;
       padding: 15px 20px;
       font-size: 1rem;
-      box-shadow: inset 0 3px 6px rgb(58 109 240 / 0.15);
+      box-shadow: inset 0 3px 6px rgba(110,38,14,0.15);
       outline: none;
       transition: box-shadow 0.3s ease;
     }
-
     #user-input:focus {
-      box-shadow: inset 0 3px 8px rgb(58 109 240 / 0.5);
+      box-shadow: inset 0 3px 8px rgba(110,38,14,0.5);
     }
-
     #send-btn {
-      background: #3a6df0;
+      background: #a47449;
       border: none;
       color: white;
       font-weight: 700;
@@ -153,41 +139,32 @@
       border-radius: 25px;
       padding: 0 30px;
       cursor: pointer;
-      box-shadow: 0 8px 20px rgb(58 109 240 / 0.5);
+      box-shadow: 0 8px 20px rgba(110,38,14,0.5);
       transition: background-color 0.3s ease, box-shadow 0.3s ease;
-      display: flex;
-      align-items: center;
-      justify-content: center;
     }
-
     #send-btn:hover {
-      background-color: #2a4ecb;
-      box-shadow: 0 12px 28px rgb(42 78 203 / 0.7);
+      background-color: #6e260e;
+      box-shadow: 0 12px 28px rgba(110,38,14,0.7);
     }
-
     .typing {
       display: flex;
       align-items: center;
       gap: 5px;
       margin-left: 5px;
     }
-
     .dot {
       width: 8px;
       height: 8px;
-      background: #3a6df0;
+      background: #6e260e;
       border-radius: 50%;
       animation: blink 1.4s infinite;
     }
-
     .dot:nth-child(2) {
       animation-delay: 0.2s;
     }
-
     .dot:nth-child(3) {
       animation-delay: 0.4s;
     }
-
     @keyframes blink {
       0%, 80%, 100% {
         opacity: 0.3;
@@ -196,18 +173,36 @@
         opacity: 1;
       }
     }
+    /* Firestick cursor */
+    #cursor {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 40px;
+      height: 40px;
+      pointer-events: none;
+      z-index: 9999;
+      transform: translate(-50%, -50%);
+    }
+    #cursor img {
+      width: 100%;
+      height: 100%;
+      filter: drop-shadow(0 0 10px orange);
+    }
   </style>
 </head>
 <body>
+  <div id="cursor">
+    <img src="fire.gif" alt="cursor" />
+  </div>
   <div id="chat-container">
-    <header>Ceylonwave Chatbot</header>
+    <header>ExploreSL Chatbot</header>
     <div id="chat-box"></div>
     <form id="input-area" autocomplete="off">
       <input type="text" id="user-input" placeholder="Ask me anything about Sri Lanka..." required />
       <button type="submit" id="send-btn">Send</button>
     </form>
   </div>
-
   <script>
     const chatBox = document.getElementById('chat-box');
     const form = document.getElementById('input-area');
@@ -225,11 +220,7 @@
     function appendTyping() {
       const typingDiv = document.createElement('div');
       typingDiv.className = 'message bot typing';
-      typingDiv.innerHTML = `
-        <div class="typing">
-          <div class="dot"></div><div class="dot"></div><div class="dot"></div>
-        </div>
-      `;
+      typingDiv.innerHTML = `<div class="typing"><div class="dot"></div><div class="dot"></div><div class="dot"></div></div>`;
       chatBox.appendChild(typingDiv);
       chatBox.scrollTop = chatBox.scrollHeight;
       return typingDiv;
@@ -240,9 +231,7 @@
       userInput.value = '';
       userInput.disabled = true;
       sendBtn.disabled = true;
-
       const typingIndicator = appendTyping();
-
       try {
         const response = await fetch('/chat', {
           method: 'POST',
@@ -256,7 +245,6 @@
         typingIndicator.remove();
         appendMessage("Oops, something went wrong. Please try again.", 'bot');
       }
-
       userInput.disabled = false;
       sendBtn.disabled = false;
       userInput.focus();
@@ -274,6 +262,13 @@
       appendMessage("Hi! I'm your Sri Lanka travel assistant. Ask me anything!", 'bot');
       userInput.focus();
     };
+
+    // Custom Cursor Movement
+    const cursor = document.getElementById('cursor');
+    window.addEventListener('mousemove', (e) => {
+      cursor.style.left = e.clientX + 'px';
+      cursor.style.top = e.clientY + 'px';
+    });
   </script>
 </body>
 </html>

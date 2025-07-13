@@ -221,7 +221,7 @@ function getRandomProducts($products, $count = 6) {
 
   <!-- Logo / Brand -->
   <div style="font-weight: 800; font-size: 1.6rem; color: var(--primary); display: flex; align-items: center;">
-    <img src="https://beyondthewesterngaze.com/wp-content/uploads/2020/08/mask-3235633_1280.jpg?w=1280" alt="logo" style="width:30px; margin-right:10px;"> Ceylon Waves
+    <img src="https://beyondthewesterngaze.com/wp-content/uploads/2020/08/mask-3235633_1280.jpg?w=1280" alt="logo" style="width:30px; margin-right:10px;"> Explore SriLanka
   </div>
 
   <!-- Links -->
