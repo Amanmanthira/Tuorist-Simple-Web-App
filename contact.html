@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Contact Us – Explore Srilanka</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative&family=Gloock&family=Quicksand&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --primary: #7b1fa2;
+      --secondary: #004d40;
+      --accent: #f9a825;
+      --bg: #fff8f0;
+      --text: #2f2f2f;
+      --card-bg: #ffffff;
+      --shadow: rgba(0, 0, 0, 0.1);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Gloock', serif;
+      background: url('https://www.paintingsrilanka.com/traditional-painting-06/') fixed center center / cover;
+      color: #3e2c12;
+    }
+
+    /* Navbar */
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      background: linear-gradient(to right, #ffffffcc, #ffffffdd), url('https://beyondthewesterngaze.com/wp-content/uploads/2020/08/mask-3235633_1280.jpg?w=1280') repeat;
+      background-size: 200px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.07);
+      z-index: 999;
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-family: 'Quicksand', sans-serif;
+      backdrop-filter: blur(6px);
+    }
+
+    nav .nav-links a {
+      margin: 0 12px;
+      text-decoration: none;
+      color: #333;
+      font-weight: 600;
+      position: relative;
+      transition: color 0.3s;
+    }
+
+    nav .nav-links a.active,
+    nav .nav-links a:hover {
+      color: var(--primary);
+      font-weight: 700;
+      border-bottom: 2px solid var(--primary);
+    }
+
+    nav .brand {
+      font-weight: 800;
+      font-size: 1.6rem;
+      color: var(--primary);
+      display: flex;
+      align-items: center;
+    }
+
+    nav .brand img {
+      width: 30px;
+      margin-right: 10px;
+    }
+
+    /* Header */
+    header {
+      background: linear-gradient(to right, #532b15cc, #8c5b2ecc), url('https://i.ibb.co/mCzBXtJ/kandyan-header.jpg') center / cover no-repeat;
+      color: #ffe8a1;
+      text-align: center;
+      padding: 6rem 1rem 3rem; /* Increased top padding due to navbar */
+      box-shadow: 0 10px 40px rgba(0,0,0,0.4);
+    }
+
+    header h1 {
+      font-family: 'Cinzel Decorative', serif;
+      font-size: 3.2rem;
+      margin-bottom: 0.5rem;
+      text-shadow: 2px 2px 6px #000;
+    }
+
+    header p {
+      font-size: 1.2rem;
+      letter-spacing: 1px;
+    }
+
+    .contact-container {
+      max-width: 1200px;
+      margin: 4rem auto;
+      background: #fff7e0d9;
+      padding: 3rem;
+      border: 10px double #d1a544;
+      border-radius: 20px;
+      box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+      backdrop-filter: blur(6px);
+    }
+
+    .contact-intro {
+      text-align: center;
+      margin-bottom: 2.5rem;
+    }
+
+    .contact-intro h2 {
+      font-size: 2.2rem;
+      color: #7c4b1d;
+      margin-bottom: 1rem;
+    }
+
+    .contact-intro p {
+      font-size: 1.1rem;
+      color: #4e3d2b;
+    }
+
+    .contact-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem;
+      justify-content: space-between;
+    }
+
+    .form-section, .info-section {
+      flex: 1;
+      min-width: 320px;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+      animation: fadeIn 1.5s ease;
+    }
+
+    form input, form textarea {
+      padding: 0.9rem;
+      margin-bottom: 1rem;
+      border: 2px solid #c49a35;
+      border-radius: 14px;
+      font-size: 1rem;
+      background: #fffef8;
+      transition: all 0.3s ease;
+    }
+
+    form input:focus, form textarea:focus {
+      outline: none;
+      border-color: #8a6119;
+      box-shadow: 0 0 10px #d9a83555;
+    }
+
+    form button {
+      padding: 0.9rem;
+      background: #a97b1c;
+      color: white;
+      font-weight: bold;
+      border: none;
+      border-radius: 14px;
+      font-size: 1.1rem;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    form button:hover {
+      background: #7b5914;
+    }
+
+    .info-card {
+      background: #fff7e0ee;
+      border: 2px solid #ac8a42;
+      padding: 1.1rem;
+      border-radius: 18px;
+      margin-bottom: 1rem;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+      font-size: 1.05rem;
+      display: flex;
+      align-items: center;
+    }
+
+    .info-card i {
+      margin-right: 12px;
+      color: #9c6c19;
+      font-size: 1.2rem;
+    }
+
+    iframe {
+      width: 100%;
+      height: 350px;
+      margin-top: 2.5rem;
+      border: 3px solid #a37523;
+      border-radius: 16px;
+      box-shadow: 0 8px 25px rgba(0,0,0,0.4);
+    }
+
+    footer {
+      text-align: center;
+      padding: 2rem 1rem;
+      background: linear-gradient(to top, #3b240e, #4c2d11);
+      color: #fddc8b;
+      font-size: 1rem;
+      border-top: 4px solid #d1a544;
+      margin-top: 3rem;
+      font-family: 'Gloock', serif;
+    }
+
+    /* Animation */
+    @keyframes fadeIn {
+      from {opacity: 0; transform: translateY(40px);}
+      to {opacity: 1; transform: translateY(0);}
+    }
+
+    /* Responsive */
+    @media(max-width: 768px) {
+      nav {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      .nav-links {
+        flex-direction: column;
+        width: 100%;
+        margin-top: 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav>
+    <div class="brand">
+      <img src="https://beyondthewesterngaze.com/wp-content/uploads/2020/08/mask-3235633_1280.jpg?w=1280" alt="logo"> Explore Srilanka
+    </div>
+    <div class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="http://localhost/project/my_bookings.php">My Bookings</a>
+      <a href="about.html">Who We Are</a>
+      <a href="blogs.html">Blogs</a>
+      <a href="journey.php">Events</a>
+      <a href="Destinations&Hotels.php">Hotels & Destinations</a>
+      <a href="services.html">Services</a>
+      <a href="weather-news.html">Weather & News</a>
+      <a href="contact.html" class="active">Contact</a>
+    </div>
+  </nav>
+
+  <!-- Header -->
+  <header>
+    <h1>📜 Connect with Explore Srilanka</h1>
+    <p>Explore, Ask, and Experience the Ancient Wonders</p>
+  </header>
+
+  <!-- Contact Section -->
+  <section class="contact-container">
+    <div class="contact-intro">
+      <h2>🪷 Reach Out to the Heritage Team</h2>
+      <p>Want to explore ancient cities, sacred temples, or royal legacies? Connect with us to begin your historical journey.</p>
+    </div>
+
+    <div class="contact-grid">
+      <!-- Contact Form -->
+      <div class="form-section">
+        <form action="submit-form.php" method="POST">
+          <input type="text" name="name" placeholder="Your Full Name" required>
+          <input type="email" name="email" placeholder="Your Email Address" required>
+          <textarea name="message" rows="5" placeholder="Your Message..." required></textarea>
+          <button type="submit">📨 Send Message</button>
+        </form>
+      </div>
+
+      <!-- Contact Info -->
+      <div class="info-section">
+        <div class="info-card">
+          <i class="fas fa-map-marker-alt"></i> Colombo, Sri Lanka
+        </div>
+        <div class="info-card">
+          <i class="fas fa-phone-alt"></i> +94 77 123 4567
+        </div>
+        <div class="info-card">
+          <i class="fas fa-envelope"></i> connect@exploresrilanka.lk
+        </div>
+        <div class="info-card">
+          <i class="fas fa-clock"></i> Mon – Fri: 9.00 AM – 5.00 PM
+        </div>
+      </div>
+    </div>
+
+    <!-- Map -->
+    <iframe 
+      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d126741.2706641186!2d80.59417520658063!3d7.290571662208168!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ae3664bbfb70b13%3A0xc174178c9a3885cd!2sKandy!5e0!3m2!1sen!2slk!4v1656791473958!5m2!1sen!2slk" 
+      allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+    </iframe>
+  </section>
+
+
+
+ <!-- Footer -->
+<footer id="contact" style="background: linear-gradient(to top, #004d40, #025e52); color: white; position: relative; overflow: hidden; font-family: 'Quicksand', sans-serif;">
+  <!-- Wave animation -->
+  <div style="position:absolute;top:0;left:0;width:100%;height:100%;z-index:0;pointer-events:none;">
+    <svg viewBox="0 0 120 28" preserveAspectRatio="none" style="width:100%; height:100%;">
+      <defs>
+        <linearGradient id="waveGradient" x1="0" x2="0" y1="1" y2="0">
+          <stop offset="0%" stop-color="#009688" />
+          <stop offset="100%" stop-color="#004d40" />
+        </linearGradient>
+      </defs>
+      <path d="M0,20 C30,28 90,0 120,20 L120,30 L0,30 Z" fill="url(#waveGradient)" opacity="0.3">
+        <animate attributeName="d" dur="8s" repeatCount="indefinite" values="
+          M0,20 C30,28 90,0 120,20 L120,30 L0,30 Z;
+          M0,22 C40,18 80,26 120,18 L120,30 L0,30 Z;
+          M0,20 C30,28 90,0 120,20 L120,30 L0,30 Z" />
+      </path>
+    </svg>
+  </div>
+
+  <!-- Footer Content -->
+  <div style="position:relative; z-index:1; padding: 3rem 2rem; max-width: 1200px; margin: auto; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 2rem;">
+
+    <!-- Column 1 -->
+    <div style="flex: 1 1 250px;">
+      <h3 style="color:#f9a825; font-family:'Great Vibes', cursive; font-size: 2rem;">Explore Srilanka</h3>
+      <p style="line-height:1.6;">A tribute to Sri Lanka’s breathtaking beauty, rich culture, and timeless charm. Come explore our island story — from the ancient cities to the waves of Mirissa.</p>
+    </div>
+
+    <!-- Column 2 -->
+    <div style="flex: 1 1 200px;">
+      <h4 style="margin-bottom:1rem; color:#ffd95a;">Quick Links</h4>
+      <ul style="list-style:none; padding:0;">
+        <li><a href="#culture" style="color:#fff; text-decoration:none;">🌺 Culture</a></li>
+        <li><a href="#mysteries" style="color:#fff; text-decoration:none;">🕉️ Mysteries</a></li>
+        <li><a href="#currency" style="color:#fff; text-decoration:none;">💱 Currency</a></li>
+        <li><a href="#video" style="color:#fff; text-decoration:none;">🎥 Videos</a></li>
+        <li><a href="#about" style="color:#fff; text-decoration:none;">🌴 About</a></li>
+      </ul>
+    </div>
+
+    <!-- Column 3 -->
+    <div style="flex: 1 1 220px;">
+      <h4 style="margin-bottom:1rem; color:#ffd95a;">Contact</h4>
+      <p>Email: info@exploresrilanka.lk</p>
+      <p>Hotline: +94 77 123 4567</p>
+      <p>Location: Colombo, Sri Lanka</p>
+      <div style="margin-top:1rem; display:flex; gap:15px;">
+        <a href="#" title="Facebook" style="color:white; font-size:1.5rem;"><i class="fab fa-facebook-f"></i></a>
+        <a href="#" title="Instagram" style="color:white; font-size:1.5rem;"><i class="fab fa-instagram"></i></a>
+        <a href="#" title="YouTube" style="color:white; font-size:1.5rem;"><i class="fab fa-youtube"></i></a>
+      </div>
+    </div>
+
+    <!-- Column 4 - Cultural Icon -->
+    <div style="flex: 1 1 180px; text-align: center;">
+      <img src="https://beyondthewesterngaze.com/wp-content/uploads/2020/08/mask-3235633_1280.jpg?w=1280" alt="Sri Lankan Mask" style="width:100px; margin-bottom:1rem; filter: drop-shadow(0 0 5px rgba(255,255,255,0.2));">
+      <p style="font-size:0.9rem; opacity:0.8;">Traditional Raksha Mask – symbol of protection & folklore.</p>
+    </div>
+
+  </div>
+
+
+  
+  <!-- Bottom Strip -->
+  <div style="text-align:center; background:#003d34; padding:1rem; font-size:0.9rem; border-top:1px solid rgba(255,255,255,0.1);">
+    © 2025 <strong>Explore Srilanka</strong> | Crafted with ❤️ from the Pearl of the Indian Ocean 🇱🇰
+  </div>
+</footer>
+</body>
+</html>
