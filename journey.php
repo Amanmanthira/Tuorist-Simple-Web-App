@@ -144,6 +144,17 @@ $events = $pdo->query("SELECT * FROM events ORDER BY date ASC")->fetchAll(PDO::F
         top: 16px;
       }
     }
+     @keyframes fireGlow {
+  0% {
+    filter: drop-shadow(0 0 4px rgba(255, 140, 0, 0.6));
+  }
+  50% {
+    filter: drop-shadow(0 0 12px rgba(255, 190, 0, 1));
+  }
+  100% {
+    filter: drop-shadow(0 0 6px rgba(255, 140, 0, 0.8));
+  }
+}
   </style>
 </head>
 <body>
@@ -223,6 +234,32 @@ $events = $pdo->query("SELECT * FROM events ORDER BY date ASC")->fetchAll(PDO::F
     <?php endforeach; ?>
   <?php endif; ?>
 </main>
+
+<!-- Fire GIF that follows the mouse -->
+<img id="fire-cursor" src="images/fire.gif" 
+     alt="fire cursor" 
+  style="
+       position: fixed; 
+       top: 0; 
+       left: 0; 
+       width: 90px; 
+       height: 90px; 
+       pointer-events: none; 
+       z-index: 1500; 
+       user-select: none;
+       filter: drop-shadow(0 0 6px rgba(255, 140, 0, 0.8));
+       animation: fireGlow 2s ease-in-out infinite alternate;
+     ">
+    <script>
+  const fireCursor = document.getElementById('fire-cursor');
+
+  window.addEventListener('mousemove', e => {
+    const offsetX = 20;  // Adjust so fire doesn't block the arrow tip
+    const offsetY = 20;
+    fireCursor.style.left = (e.clientX + offsetX) + 'px';
+    fireCursor.style.top = (e.clientY + offsetY) + 'px';
+  });
+</script>
 
 <script>
   // Dark Mode Toggle
