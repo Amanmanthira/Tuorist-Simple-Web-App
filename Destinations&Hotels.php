@@ -219,12 +219,12 @@ $destinations = $pdo->query("SELECT * FROM destinations ORDER BY created_at DESC
 
 
 <!-- Navbar -->
-  <nav style="
+<nav style="
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
-  background: linear-gradient(to right, #ffffffcc, #ffffffdd), url('https://beyondthewesterngaze.com/wp-content/uploads/2020/08/mask-3235633_1280.jpg?w=1280') repeat;
+  background: linear-gradient(to right, #ffffffcc, #ffffffdd),  repeat;
   background-size: 200px;
   box-shadow: 0 4px 20px rgba(0,0,0,0.07);
   z-index: 999;
